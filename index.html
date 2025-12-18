@@ -41,6 +41,7 @@
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         a { text-decoration: none; color: inherit; transition: var(--transition); }
@@ -119,7 +120,7 @@
         .nav-link:hover { background: rgba(255,255,255,0.15); color: #fbbf24; }
         .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary-color); }
 
-        /* --- NEW HERO SECTION (GALLERY SLIDER) --- */
+        /* --- HERO SECTION (GALLERY SLIDER) --- */
         .hero {
             height: 550px;
             position: relative;
@@ -127,10 +128,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #000; /* Fallback */
+            background: #000; 
         }
         
-        /* Slider Wrapper */
         .hero-slider {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -150,7 +150,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Dim the image slightly so text pops */
             filter: brightness(0.6); 
         }
 
@@ -192,91 +191,68 @@
         .section-title h2 { font-size: 2.2rem; color: var(--primary-color); position: relative; display: inline-block; margin-bottom: 10px; }
         .section-title h2::after { content: ''; width: 80px; height: 4px; background: var(--secondary-color); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
 
-        /* --- NEW SECTION 1: VILLAGE AT A GLANCE (KPI ICONS) --- */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .stat-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 25px 15px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border-bottom: 4px solid var(--primary-color);
-            transition: var(--transition);
-        }
+        /* --- STATS GRID --- */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 20px; }
+        .stat-card { background: var(--white); border-radius: 12px; padding: 25px 15px; text-align: center; box-shadow: var(--shadow); border-bottom: 4px solid var(--primary-color); transition: var(--transition); }
         .stat-card:hover { transform: translateY(-5px); }
-
-        .stat-icon-wrapper {
-            width: 70px;
-            height: 70px;
-            background: var(--primary-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            color: var(--primary-color);
-            font-size: 1.8rem;
-        }
-        
-        /* Alternate Colors for visual appeal */
-        .stat-card:nth-child(2) .stat-icon-wrapper { background: #fee2e2; color: #ef4444; }
-        .stat-card:nth-child(2) { border-bottom-color: #ef4444; }
-        
-        .stat-card:nth-child(3) .stat-icon-wrapper { background: #e0f2fe; color: #0284c7; }
-        .stat-card:nth-child(3) { border-bottom-color: #0284c7; }
-        
-        .stat-card:nth-child(4) .stat-icon-wrapper { background: #ffedd5; color: var(--secondary-color); }
-        .stat-card:nth-child(4) { border-bottom-color: var(--secondary-color); }
-
+        .stat-icon-wrapper { width: 70px; height: 70px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: var(--primary-color); font-size: 1.8rem; }
+        .stat-card:nth-child(2) .stat-icon-wrapper { background: #fee2e2; color: #ef4444; } .stat-card:nth-child(2) { border-bottom-color: #ef4444; }
+        .stat-card:nth-child(3) .stat-icon-wrapper { background: #e0f2fe; color: #0284c7; } .stat-card:nth-child(3) { border-bottom-color: #0284c7; }
+        .stat-card:nth-child(4) .stat-icon-wrapper { background: #ffedd5; color: var(--secondary-color); } .stat-card:nth-child(4) { border-bottom-color: var(--secondary-color); }
         .stat-number { font-size: 1.8rem; font-weight: 800; color: var(--text-dark); display: block; line-height: 1.2; }
         .stat-label { font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
 
-        /* --- NEW SECTION 2: PROGRESS METER --- */
-        .progress-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-        }
-
-        .progress-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            border: 1px solid #f0f0f0;
-        }
-
+        /* --- PROGRESS METER --- */
+        .progress-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
+        .progress-card { background: var(--white); padding: 30px; border-radius: 16px; box-shadow: var(--shadow); border: 1px solid #f0f0f0; }
         .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .progress-title { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 10px; }
         .progress-title i { color: var(--secondary-color); }
-        
-        .progress-track {
-            background: #e5e7eb;
-            height: 12px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            border-radius: 10px;
-            /* Animated striped background */
-            background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-            background-size: 1rem 1rem;
-            animation: progress-stripes 1s linear infinite;
-        }
-        
+        .progress-track { background: #e5e7eb; height: 12px; border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+        .progress-fill { height: 100%; border-radius: 10px; background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent); background-size: 1rem 1rem; animation: progress-stripes 1s linear infinite; }
         @keyframes progress-stripes { from { background-position: 1rem 0; } to { background-position: 0 0; } }
-
         .progress-meta { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: var(--text-light); }
         .progress-percent { font-size: 1.2rem; font-weight: 800; color: var(--text-dark); }
+
+        /* --- NEW PADADHIKARI SECTION CSS --- */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .member-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            border-top: 4px solid var(--secondary-color);
+        }
+        .member-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
+        
+        .member-card.sarpanch { border-top: 4px solid var(--primary-color); background: #fdfdfd; }
+        
+        .member-photo-box {
+            height: 280px; width: 100%; background: #f1f5f9;
+            display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
+        }
+        .member-photo-box img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.4s ease; }
+        .member-card:hover .member-photo-box img { transform: scale(1.05); }
+
+        .member-details { padding: 20px; text-align: center; }
+        .role-badge {
+            background: var(--primary-light); color: var(--primary-color); padding: 4px 12px;
+            border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+            display: inline-block; margin-bottom: 10px;
+        }
+        .member-card.sarpanch .role-badge { background: var(--primary-color); color: var(--white); }
+        .member-name { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; line-height: 1.3; }
+        .member-contact {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            color: var(--text-light); font-size: 0.9rem; background: #f8fafc;
+            padding: 8px; border-radius: 8px; margin-top: 10px;
+        }
+        .member-contact i { color: var(--secondary-color); }
 
         /* --- LEADERS SECTION --- */
         .leaders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
@@ -352,6 +328,7 @@
             .logo-img { height: 50px; }
             .leaders-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
             .progress-grid { grid-template-columns: 1fr; }
+            .members-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
         }
     </style>
 </head>
@@ -391,7 +368,7 @@
             <div class="container">
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#" class="nav-link">मुख्यपृष्ठ</a></li>
-                    <li><a href="#about" class="nav-link">आमच्याबद्दल</a></li>
+                    <li><a href="#padadhikari" class="nav-link">पदाधिकारी</a></li> <!-- Added Link Here -->
                     <li><a href="#services" class="nav-link">नागरिक सेवा</a></li>
                     <li><a href="#stats" class="nav-link">प्रगती अहवाल</a></li>
                     <li><a href="#projects" class="nav-link">विकास कामे</a></li>
@@ -402,10 +379,9 @@
         </div>
     </header>
 
-    <!-- UPDATED HERO SECTION WITH GALLERY SLIDER -->
+    <!-- HERO SECTION WITH GALLERY SLIDER -->
     <section class="hero">
         <div class="hero-slider">
-            <!-- 12 Placeholder Images for Gallery -->
             <div class="hero-slide active"><img src="https://anikfin.com/Ker/1.jpg" alt="Slide 1"></div>
             <div class="hero-slide"><img src="https://anikfin.com/Ker/3.jpg" alt="Slide 2"></div>
             <div class="hero-slide"><img src="https://anikfin.com/Ker/4.jpg" alt="Slide 2"></div>
@@ -425,7 +401,7 @@
         <div class="hero-content container">
             <h1>केर-भेकुर्ली</h1>
             <p>स्वच्छ, सुंदर आणि समृद्ध आदर्श गाव</p>
-            <a href="#services" class="btn btn-primary">अधिक माहिती</a>
+            <a href="#padadhikari" class="btn btn-primary">आमचे नेतृत्व</a>
         </div>
     </section>
 
@@ -447,7 +423,7 @@
         </div>
     </div>
 
-    <!-- NEW SECTION: VILLAGE AT A GLANCE (KPI INDICATORS) -->
+    <!-- VILLAGE AT A GLANCE (KPI INDICATORS) -->
     <section id="stats" class="section-padding">
         <div class="container">
             <div class="section-title">
@@ -456,41 +432,31 @@
             </div>
 
             <div class="stats-grid">
-                <!-- Stat 1 -->
                 <div class="stat-card">
                     <div class="stat-icon-wrapper"><i class="fas fa-users"></i></div>
-                    <span class="stat-number">१२,५००</span>
-                    <span class="stat-label">एकूण लोकसंख्या</span>
+                    <span class="stat-number">१२,५००</span><span class="stat-label">एकूण लोकसंख्या</span>
                 </div>
-                <!-- Stat 2 -->
                 <div class="stat-card">
                     <div class="stat-icon-wrapper"><i class="fas fa-home"></i></div>
-                    <span class="stat-number">१,२००</span>
-                    <span class="stat-label">एकूण घरसंख्या</span>
+                    <span class="stat-number">१,२००</span><span class="stat-label">एकूण घरसंख्या</span>
                 </div>
-                <!-- Stat 3 -->
                 <div class="stat-card">
                     <div class="stat-icon-wrapper"><i class="fas fa-graduation-cap"></i></div>
-                    <span class="stat-number">८८.५%</span>
-                    <span class="stat-label">साक्षरता दर</span>
+                    <span class="stat-number">८८.५%</span><span class="stat-label">साक्षरता दर</span>
                 </div>
-                <!-- Stat 4 -->
                 <div class="stat-card">
                     <div class="stat-icon-wrapper"><i class="fas fa-map-marked-alt"></i></div>
-                    <span class="stat-number">९</span>
-                    <span class="stat-label">प्रभाग</span>
+                    <span class="stat-number">९</span><span class="stat-label">प्रभाग</span>
                 </div>
-                <!-- Stat 5 -->
                 <div class="stat-card">
                     <div class="stat-icon-wrapper"><i class="fas fa-hand-holding-water"></i></div>
-                    <span class="stat-number">१०</span>
-                    <span class="stat-label">पाण्याचे स्त्रोत</span>
+                    <span class="stat-number">१०</span><span class="stat-label">पाण्याचे स्त्रोत</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NEW SECTION: PROGRESS METER (KPI INDICATORS) -->
+    <!-- PROGRESS METER (KPI INDICATORS) -->
     <section class="section-padding" style="background: var(--light-bg);">
         <div class="container">
             <div class="section-title">
@@ -499,61 +465,220 @@
             </div>
 
             <div class="progress-grid">
-                <!-- Item 1: Toilets -->
                 <div class="progress-card">
                     <div class="progress-header">
                         <div class="progress-title"><i class="fas fa-restroom"></i> स्वच्छतागृह बांधणी</div>
                     </div>
-                    <div class="progress-track">
-                        <div class="progress-fill" style="width: 92%; background-color: #3b82f6;"></div>
-                    </div>
-                    <div class="progress-meta">
-                        <span class="progress-percent">९२%</span>
-                        <span>१२०० पैकी ११०४</span>
-                    </div>
+                    <div class="progress-track"><div class="progress-fill" style="width: 92%; background-color: #3b82f6;"></div></div>
+                    <div class="progress-meta"><span class="progress-percent">९२%</span><span>१२०० पैकी ११०४</span></div>
                 </div>
 
-                <!-- Item 2: Water Tap -->
                 <div class="progress-card">
                     <div class="progress-header">
                         <div class="progress-title"><i class="fas fa-faucet"></i> नळ जोडणी कव्हरेज</div>
                     </div>
-                    <div class="progress-track">
-                        <div class="progress-fill" style="width: 88%; background-color: #06b6d4;"></div>
-                    </div>
-                    <div class="progress-meta">
-                        <span class="progress-percent">८८%</span>
-                        <span>१२०० पैकी १०५६</span>
-                    </div>
+                    <div class="progress-track"><div class="progress-fill" style="width: 88%; background-color: #06b6d4;"></div></div>
+                    <div class="progress-meta"><span class="progress-percent">८८%</span><span>१२०० पैकी १०५६</span></div>
                 </div>
 
-                <!-- Item 3: Electricity -->
                 <div class="progress-card">
                     <div class="progress-header">
                         <div class="progress-title"><i class="fas fa-lightbulb"></i> वीजपुरवठा असलेली घरे</div>
                     </div>
-                    <div class="progress-track">
-                        <div class="progress-fill" style="width: 98%; background-color: #eab308;"></div>
-                    </div>
-                    <div class="progress-meta">
-                        <span class="progress-percent">९८%</span>
-                        <span>१२०० पैकी ११९६</span>
-                    </div>
+                    <div class="progress-track"><div class="progress-fill" style="width: 98%; background-color: #eab308;"></div></div>
+                    <div class="progress-meta"><span class="progress-percent">९८%</span><span>१२०० पैकी ११९६</span></div>
                 </div>
 
-                <!-- Item 4: Plantation -->
                 <div class="progress-card">
                     <div class="progress-header">
                         <div class="progress-title"><i class="fas fa-tree"></i> वृक्षारोपण (लक्ष्य: १००००)</div>
                     </div>
-                    <div class="progress-track">
-                        <div class="progress-fill" style="width: 65%; background-color: #22c55e;"></div>
+                    <div class="progress-track"><div class="progress-fill" style="width: 65%; background-color: #22c55e;"></div></div>
+                    <div class="progress-meta"><span class="progress-percent">६५%</span><span>६५०० वृक्ष लागवड</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ***** NEW SECTION: PADADHIKARI (OFFICE BEARERS) ***** -->
+    <!-- Extracted from your image -->
+    <section id="padadhikari" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>पदाधिकारी व कर्मचारी</h2>
+                <p>गावाच्या विकासासाठी कार्यरत असलेले सदस्य आणि सेवक</p>
+            </div>
+            
+            <div class="members-grid">
+                <!-- 1. Sarpanch -->
+                <div class="member-card sarpanch">
+                    <div class="member-photo-box">
+                        <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/1.png" alt="Rukmini Naik">
                     </div>
-                    <div class="progress-meta">
-                        <span class="progress-percent">६५%</span>
-                        <span>६५०० वृक्ष लागवड</span>
+                    <div class="member-details">
+                        <span class="role-badge">सरपंच</span>
+                        <h3 class="member-name">सौ. रुक्मिणी मुकुंद नाईक</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९६२३०५०६२४</div>
                     </div>
                 </div>
+
+                <!-- 2. Up-Sarpanch -->
+                <div class="member-card sarpanch">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/12.png" alt="Tejas Desai">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">उपसरपंच</span>
+                        <h3 class="member-name">श्री. तेजस तुकाराम देसाई</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९१५८५१८९०८</div>
+                    </div>
+                </div>
+
+                <!-- 3. Gramsevak -->
+                <div class="member-card">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/2.png" alt="Sandeep Patil">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">ग्रामसेवक</span>
+                        <h3 class="member-name">श्री. संदीप भगवान पाटील</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४०५९९६९३९</div>
+                    </div>
+                </div>
+
+                <!-- 4. Member -->
+                <div class="member-card">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/5.png" alt="Laxman Dhare">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">सदस्य</span>
+                        <h3 class="member-name">श्री. लक्ष्मण भाऊ धारे</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ८७६६०५६४३५</div>
+                    </div>
+                </div>
+
+                <!-- 5. Member -->
+                <div class="member-card">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/6.png" alt="Priyanka Desai">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">सदस्य</span>
+                        <h3 class="member-name">सौ. प्रियंका मंगेश देसाई</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ७५८८६३१२८९</div>
+                    </div>
+                </div>
+
+                <!-- 6. Member -->
+                <div class="member-card">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/7.png" alt="Meghna Desai">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">सदस्य</span>
+                        <h3 class="member-name">सौ. मेघना महादेव देसाई</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ७५८८३६३९७०</div>
+                    </div>
+                </div>
+
+                <!-- 7. Member -->
+                <div class="member-card">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/6.png" alt="Laxmi Ghurye">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">सदस्य</span>
+                        <h3 class="member-name">सौ. लक्ष्मी नारायण घुर्ये</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४२०७३२४१४</div>
+                    </div>
+                </div>
+
+                <!-- 8. Member -->
+                <div class="member-card">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/8.png" alt="Gayatri Desai">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">सदस्य</span>
+                        <h3 class="member-name">सौ. गायत्री गणपत देसाई</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४०४७१०४२४</div>
+                    </div>
+                </div>
+
+                <!-- 9. Member -->
+                <div class="member-card">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/9.png" alt="Yashwant Desai">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">सदस्य</span>
+                        <h3 class="member-name">श्री. यशवंत राजाराम देसाई</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ७५८८८२९४२४</div>
+                    </div>
+                </div>
+
+                <!-- 10. Staff -->
+                <div class="member-card">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/11.png" alt="Komal Bhagwat">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">केंद्रचालक</span>
+                        <h3 class="member-name">सौ. कोमल अजित भागवत</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४०५३३५८३८</div>
+                    </div>
+                </div>
+
+                <!-- 11. Staff -->
+                <div class="member-card">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/10.png" alt="Vinayak Desai">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">हंगामी नळ कामगार</span>
+                        <h3 class="member-name">श्री. विनायक विठ्ठल देसाई</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४२११८०२१०</div>
+                    </div>
+                </div>
+
+                <!-- 12. Staff -->
+                <div class="member-card">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/9.png" alt="Shankar Desai">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">शिपाई</span>
+                        <h3 class="member-name">श्री. शंकर शांताराम देसाई</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ८२७५५८६४८३</div>
+                    </div>
+                </div>
+
+                <!-- 13. Staff -->
+                <div class="member-card">
+                    <div class="member-photo-box">
+                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
+                        <img src="https://anikfin.com/Ker/staff/13.png" alt="Mahendra Desai">
+                    </div>
+                    <div class="member-details">
+                        <span class="role-badge">ग्राम रोजगार सेवक</span>
+                        <h3 class="member-name">श्री. महेंद्र विष्णू देसाई</h3>
+                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४०५५६२४८५</div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
