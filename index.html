@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="mr">
 <head>
@@ -159,7 +160,7 @@
             text-align: center;
             color: var(--white);
             animation: fadeInUp 1s ease;
-            width: 90%; /* Ensure text doesn't touch edges */
+            width: 90%;
         }
         .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         .hero p { font-size: 1.4rem; margin-bottom: 30px; color: #e2e8f0; font-weight: 500; }
@@ -307,103 +308,58 @@
         /* ========================================= */
         
         @media (max-width: 992px) {
-            /* Header Adjustment for Tablet/Small Laptop */
-            .brand-area { 
-                flex-direction: column; 
-                justify-content: center; 
-                text-align: center; 
-                gap: 10px; 
-            }
+            .brand-area { flex-direction: column; justify-content: center; text-align: center; gap: 10px; }
             .title-block { width: 100%; margin: 5px 0; }
             .logo-img { height: 70px; margin: 0 auto; }
-            .mobile-toggle { 
-                display: block; 
-                position: absolute; 
-                right: 20px; 
-                top: 20px;
-                padding: 10px;
-                background: #f1f5f9;
-                border-radius: 8px;
-            }
+            .mobile-toggle { display: block; position: absolute; right: 20px; top: 20px; padding: 10px; background: #f1f5f9; border-radius: 8px; }
             
-            /* Full Width Navigation Menu */
             .nav-menu {
-                flex-direction: column; 
-                display: none; 
-                background: var(--white);
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                width: 100%; 
-                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-                border-top: 3px solid var(--secondary-color);
+                flex-direction: column; display: none; background: var(--white);
+                position: absolute; top: 100%; left: 0; width: 100%; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-top: 3px solid var(--secondary-color);
             }
-            .nav-link { 
-                color: var(--text-dark); 
-                border-bottom: 1px solid #eee; 
-                text-align: left;
-                padding: 15px 25px;
-            }
+            .nav-link { color: var(--text-dark); border-bottom: 1px solid #eee; text-align: left; padding: 15px 25px; }
             .nav-link:hover { padding-left: 30px; color: var(--primary-color); background: #f8fafc; }
         }
 
         @media (max-width: 768px) {
-            /* General Layout Tweaks */
             .section-padding { padding: 40px 0; }
             .section-title { margin-bottom: 30px; }
             .section-title h2 { font-size: 1.8rem; }
-            
-            /* Top Bar Stacking */
             .top-bar .container { flex-direction: column; gap: 5px; text-align: center; }
-            
-            /* Header Elements */
             .logo-img { height: 60px; }
             .main-title { font-size: 1.4rem; }
             .sub-title { font-size: 0.8rem; }
             .mobile-toggle { top: 15px; }
 
-            /* Hero Section */
             .hero { height: 350px; }
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; margin-bottom: 20px; }
             .hero .btn { padding: 10px 20px; font-size: 0.8rem; }
 
-            /* Grids - Force 1 column for clean mobile look */
             .stats-grid { grid-template-columns: 1fr; }
             .progress-grid { grid-template-columns: 1fr; }
             
-            /* Padadhikari Card Fix - Make them full width & nice */
-            .members-grid { 
-                grid-template-columns: 1fr; /* Full width card */
-                gap: 20px;
-                padding: 0 10px; 
-            }
-            .member-photo-box { height: 320px; } /* Taller image for mobile */
+            .members-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 10px; }
+            .member-photo-box { height: 320px; }
             
-            /* Leaders Section */
             .leaders-grid { grid-template-columns: 1fr; max-width: 100%; }
             .leader-img-wrapper { height: 350px; }
 
-            /* Services Grid - 2 columns is okay for icons, but 1 is safer for text */
             .services-grid { grid-template-columns: 1fr; gap: 15px; }
             .service-card { padding: 25px 15px; }
             
-            /* Search Bar */
             .search-box { width: 100%; border-radius: 10px; }
             .search-box input { padding: 10px 15px; font-size: 0.9rem; }
             .search-box button { width: 40px; height: 40px; }
         }
         
         @media (max-width: 480px) {
-            /* Small Mobile Specifics */
             .main-title { font-size: 1.25rem; line-height: 1.4; }
             .location-text { font-size: 0.8rem; }
             .logo-img { height: 55px; }
-            
             .hero { height: 300px; }
             .hero h1 { font-size: 1.6rem; }
-            
-            /* Compact Member Cards */
             .member-photo-box { height: 280px; }
             .member-name { font-size: 1.1rem; }
         }
@@ -433,7 +389,6 @@
                         <h1 class="main-title">ग्रुप ग्रामपंचायत केर-भेकुर्ली</h1>
                         <p class="location-text">ता. दोडामार्ग | जि. सिंधुदुर्ग</p>
                     </div>
-                    <!-- On mobile, this second logo will stack nicely now -->
                     <img src="https://anikfin.com/Ker/zp.png" alt="Zilla Parishad Logo" class="logo-img zp-logo">
                 </div>
                 <div class="mobile-toggle" onclick="toggleMenu()">
@@ -446,11 +401,10 @@
             <div class="container">
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#" class="nav-link">मुख्यपृष्ठ</a></li>
+                    <li><a href="#leaders" class="nav-link">नेतृत्व</a></li>
                     <li><a href="#padadhikari" class="nav-link">पदाधिकारी</a></li>
                     <li><a href="#services" class="nav-link">नागरिक सेवा</a></li>
                     <li><a href="#stats" class="nav-link">प्रगती अहवाल</a></li>
-                    <li><a href="#projects" class="nav-link">विकास कामे</a></li>
-                    <li><a href="#gallery" class="nav-link">गॅलरी</a></li>
                     <li><a href="#contact" class="nav-link">संपर्क</a></li>
                 </ul>
             </div>
@@ -459,23 +413,9 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
-        <div class="hero-slider">
-            <div class="hero-slide active"><img src="https://anikfin.com/Ker/1.jpg" alt="Slide 1"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/3.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/4.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/5.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/6.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/7.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/8.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/9.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/10.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/11.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/12.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/13.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/14.jpg" alt="Slide 2"></div>
-            <div class="hero-slide"><img src="https://anikfin.com/Ker/15.jpg" alt="Slide 2"></div>
+        <div class="hero-slider" id="hero-slider-container">
+            <!-- Images are loaded from script below -->
         </div>
-        
         <div class="hero-content container">
             <h1>केर-भेकुर्ली</h1>
             <p>स्वच्छ, सुंदर आणि समृद्ध आदर्श गाव</p>
@@ -494,351 +434,74 @@
         <div class="news-ticker">
             <div class="news-wrapper">
                 <span class="news-label">ताज्या घोषणा</span>
-                <marquee onmouseover="this.stop()" onmouseout="this.start()">
-                    ग्रामसभा दिनांक १५ ऑगस्ट रोजी आयोजित केली आहे. | पाणी पट्टी आणि घरपट्टी ३१ मार्च पूर्वी भरा. | केर-भेकुर्ली गावात प्लास्टिक बंदी लागू.
+                <marquee onmouseover="this.stop()" onmouseout="this.start()" id="marquee-text">
+                    <!-- News loaded from script -->
                 </marquee>
             </div>
         </div>
     </div>
 
-    <!-- VILLAGE AT A GLANCE (KPI INDICATORS) -->
-    <section id="stats" class="section-padding">
+    <!-- 1. Leaders Section (Moved Up) -->
+    <section id="leaders" class="section-padding" style="background: var(--white);">
+        <div class="container">
+            <div class="section-title">
+                <h2>महाराष्ट्र राज्याचे नेतृत्व</h2>
+                <p>राज्याच्या विकासाचे आधारस्तंभ</p>
+            </div>
+            <div class="leaders-grid" id="leaders-container">
+                <!-- Content loaded from script -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. VILLAGE AT A GLANCE (Stats) -->
+    <section id="stats" class="section-padding" style="background: var(--light-bg);">
         <div class="container">
             <div class="section-title">
                 <h2>गाव एक दृष्टीक्षेपात</h2>
                 <p>आमच्या गावाची महत्वाची माहिती व सांख्यिकी</p>
             </div>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon-wrapper"><i class="fas fa-users"></i></div>
-                    <span class="stat-number">१२,५००</span><span class="stat-label">एकूण लोकसंख्या</span>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon-wrapper"><i class="fas fa-home"></i></div>
-                    <span class="stat-number">१,२००</span><span class="stat-label">एकूण घरसंख्या</span>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon-wrapper"><i class="fas fa-graduation-cap"></i></div>
-                    <span class="stat-number">८८.५%</span><span class="stat-label">साक्षरता दर</span>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon-wrapper"><i class="fas fa-map-marked-alt"></i></div>
-                    <span class="stat-number">९</span><span class="stat-label">प्रभाग</span>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon-wrapper"><i class="fas fa-hand-holding-water"></i></div>
-                    <span class="stat-number">१०</span><span class="stat-label">पाण्याचे स्त्रोत</span>
-                </div>
+            <div class="stats-grid" id="stats-container">
+                <!-- Content loaded from script -->
             </div>
         </div>
     </section>
 
-    <!-- PROGRESS METER (KPI INDICATORS) -->
-    <section class="section-padding" style="background: var(--light-bg);">
+    <!-- 3. PROGRESS METER -->
+    <section class="section-padding">
         <div class="container">
             <div class="section-title">
                 <h2>प्रगती मीटर</h2>
                 <p>विकास कामांची प्रगती आणि उपलब्धी</p>
             </div>
-
-            <div class="progress-grid">
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <div class="progress-title"><i class="fas fa-restroom"></i> स्वच्छतागृह बांधणी</div>
-                    </div>
-                    <div class="progress-track"><div class="progress-fill" style="width: 92%; background-color: #3b82f6;"></div></div>
-                    <div class="progress-meta"><span class="progress-percent">९२%</span><span>१२०० पैकी ११०४</span></div>
-                </div>
-
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <div class="progress-title"><i class="fas fa-faucet"></i> नळ जोडणी कव्हरेज</div>
-                    </div>
-                    <div class="progress-track"><div class="progress-fill" style="width: 88%; background-color: #06b6d4;"></div></div>
-                    <div class="progress-meta"><span class="progress-percent">८८%</span><span>१२०० पैकी १०५६</span></div>
-                </div>
-
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <div class="progress-title"><i class="fas fa-lightbulb"></i> वीजपुरवठा असलेली घरे</div>
-                    </div>
-                    <div class="progress-track"><div class="progress-fill" style="width: 98%; background-color: #eab308;"></div></div>
-                    <div class="progress-meta"><span class="progress-percent">९८%</span><span>१२०० पैकी ११९६</span></div>
-                </div>
-
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <div class="progress-title"><i class="fas fa-tree"></i> वृक्षारोपण (लक्ष्य: १००००)</div>
-                    </div>
-                    <div class="progress-track"><div class="progress-fill" style="width: 65%; background-color: #22c55e;"></div></div>
-                    <div class="progress-meta"><span class="progress-percent">६५%</span><span>६५०० वृक्ष लागवड</span></div>
-                </div>
+            <div class="progress-grid" id="progress-container">
+                <!-- Content loaded from script -->
             </div>
         </div>
     </section>
 
-    <!-- ***** PADADHIKARI (OFFICE BEARERS) ***** -->
-    <section id="padadhikari" class="section-padding">
+    <!-- 4. PADADHIKARI (Office Bearers) -->
+    <section id="padadhikari" class="section-padding" style="background: var(--light-bg);">
         <div class="container">
             <div class="section-title">
                 <h2>पदाधिकारी व कर्मचारी</h2>
                 <p>गावाच्या विकासासाठी कार्यरत असलेले सदस्य आणि सेवक</p>
             </div>
-            
-            <div class="members-grid">
-                <!-- 1. Sarpanch -->
-                <div class="member-card sarpanch">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/1.png" alt="Rukmini Naik">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">सरपंच</span>
-                        <h3 class="member-name">सौ. रुक्मिणी मुकुंद नाईक</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९६२३०५०६२४</div>
-                    </div>
-                </div>
-
-                <!-- 2. Up-Sarpanch -->
-                <div class="member-card sarpanch">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/12.png" alt="Tejas Desai">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">उपसरपंच</span>
-                        <h3 class="member-name">श्री. तेजस तुकाराम देसाई</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९१५८५१८९०८</div>
-                    </div>
-                </div>
-
-                <!-- 3. Gramsevak -->
-                <div class="member-card">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/2.png" alt="Sandeep Patil">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">ग्रामसेवक</span>
-                        <h3 class="member-name">श्री. संदीप भगवान पाटील</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४०५९९६९३९</div>
-                    </div>
-                </div>
-
-                <!-- 4. Member -->
-                <div class="member-card">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/5.png" alt="Laxman Dhare">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">सदस्य</span>
-                        <h3 class="member-name">श्री. लक्ष्मण भाऊ धारे</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ८७६६०५६४३५</div>
-                    </div>
-                </div>
-
-                <!-- 5. Member -->
-                <div class="member-card">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/6.png" alt="Priyanka Desai">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">सदस्य</span>
-                        <h3 class="member-name">सौ. प्रियंका मंगेश देसाई</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ७५८८६३१२८९</div>
-                    </div>
-                </div>
-
-                <!-- 6. Member -->
-                <div class="member-card">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/7.png" alt="Meghna Desai">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">सदस्य</span>
-                        <h3 class="member-name">सौ. मेघना महादेव देसाई</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ७५८८३६३९७०</div>
-                    </div>
-                </div>
-
-                <!-- 7. Member -->
-                <div class="member-card">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/6.png" alt="Laxmi Ghurye">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">सदस्य</span>
-                        <h3 class="member-name">सौ. लक्ष्मी नारायण घुर्ये</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४२०७३२४१४</div>
-                    </div>
-                </div>
-
-                <!-- 8. Member -->
-                <div class="member-card">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/8.png" alt="Gayatri Desai">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">सदस्य</span>
-                        <h3 class="member-name">सौ. गायत्री गणपत देसाई</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४०४७१०४२४</div>
-                    </div>
-                </div>
-
-                <!-- 9. Member -->
-                <div class="member-card">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/9.png" alt="Yashwant Desai">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">सदस्य</span>
-                        <h3 class="member-name">श्री. यशवंत राजाराम देसाई</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ७५८८८२९४२४</div>
-                    </div>
-                </div>
-
-                <!-- 10. Staff -->
-                <div class="member-card">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/11.png" alt="Komal Bhagwat">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">केंद्रचालक</span>
-                        <h3 class="member-name">सौ. कोमल अजित भागवत</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४०५३३५८३८</div>
-                    </div>
-                </div>
-
-                <!-- 11. Staff -->
-                <div class="member-card">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/10.png" alt="Vinayak Desai">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">हंगामी नळ कामगार</span>
-                        <h3 class="member-name">श्री. विनायक विठ्ठल देसाई</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४२११८०२१०</div>
-                    </div>
-                </div>
-
-                <!-- 12. Staff -->
-                <div class="member-card">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/9.png" alt="Shankar Desai">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">शिपाई</span>
-                        <h3 class="member-name">श्री. शंकर शांताराम देसाई</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ८२७५५८६४८३</div>
-                    </div>
-                </div>
-
-                <!-- 13. Staff -->
-                <div class="member-card">
-                    <div class="member-photo-box">
-                        <img src="https://anikfin.com/Ker/staff/14.png" alt="Mahendra Desai">
-                    </div>
-                    <div class="member-details">
-                        <span class="role-badge">ग्राम रोजगार सेवक</span>
-                        <h3 class="member-name">श्री. महेंद्र विष्णू देसाई</h3>
-                        <div class="member-contact"><i class="fas fa-phone-alt"></i> ९४०५५६२४८५</div>
-                    </div>
-                </div>
-
+            <div class="members-grid" id="members-container">
+                <!-- Content loaded from script -->
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- 5. Services Section -->
     <section id="services" class="section-padding">
         <div class="container">
             <div class="section-title">
                 <h2>ई-सेवा आणि सुविधा</h2>
                 <p>ग्रुप ग्रामपंचायत केर-भेकुर्ली</p>
             </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="icon-circle"><i class="fas fa-users"></i></div>
-                    <h3>पदाधिकारी</h3>
-                    <p>सरपंच व सदस्य मंडळ</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-circle"><i class="fas fa-file-alt"></i></div>
-                    <h3>दाखले</h3>
-                    <p>जन्म-मृत्यू, रहिवासी दाखले</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-circle"><i class="fas fa-hand-holding-water"></i></div>
-                    <h3>पाणी पुरवठा</h3>
-                    <p>योजना व तक्रार निवारण</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-circle"><i class="fas fa-landmark"></i></div>
-                    <h3>घरपट्टी / कर</h3>
-                    <p>कराची माहिती व भरणा</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-circle"><i class="fas fa-bullhorn"></i></div>
-                    <h3>ग्रामसभा</h3>
-                    <p>इतिवृत्त आणि नोटीस</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-circle"><i class="fas fa-image"></i></div>
-                    <h3>गॅलरी</h3>
-                    <p>विकास कामांचे फोटो</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-circle"><i class="fas fa-phone-alt"></i></div>
-                    <h3>संपर्क</h3>
-                    <p>आम्हाला संपर्क करा</p>
-                </div>
-                <div class="service-card">
-                    <div class="icon-circle"><i class="fas fa-download"></i></div>
-                    <h3>डाउनलोड</h3>
-                    <p>अर्जाचे नमुने</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Leaders Section -->
-    <section class="section-padding" style="background: var(--light-bg);">
-        <div class="container">
-            <div class="section-title">
-                <h2>महाराष्ट्र राज्याचे नेतृत्व</h2>
-                <p>राज्याच्या विकासाचे आधारस्तंभ</p>
-            </div>
-            
-            <div class="leaders-grid">
-                <!-- CM -->
-                <div class="leader-card">
-                    <div class="leader-img-wrapper">
-                        <img src="https://anikfin.com/Ker/cm.png" alt="CM">
-                    </div>
-                    <div class="leader-info">
-                        <p class="leader-role">माननीय मुख्यमंत्री</p>
-                        <h3 class="leader-name">श्री. देवेंद्र फडणवीस</h3>
-                    </div>
-                </div>
-                <!-- DCM 1 -->
-                <div class="leader-card">
-                    <div class="leader-img-wrapper">
-                        <img src="https://anikfin.com/Ker/shinde.png" alt="DCM">
-                    </div>
-                    <div class="leader-info">
-                        <p class="leader-role">माननीय उपमुख्यमंत्री</p>
-                        <h3 class="leader-name">श्री. एकनाथ शिंदे</h3>
-                    </div>
-                </div>
-                <!-- DCM 2 -->
-                <div class="leader-card">
-                    <div class="leader-img-wrapper">
-                        <img src="https://www.loksatta.com/wp-content/uploads/2023/07/Ajit-Pawar-4.jpg" alt="DCM">
-                    </div>
-                    <div class="leader-info">
-                        <p class="leader-role">माननीय उपमुख्यमंत्री</p>
-                        <h3 class="leader-name">श्री. अजित पवार</h3>
-                    </div>
-                </div>
+            <div class="services-grid" id="services-container">
+                <!-- Content loaded from script -->
             </div>
         </div>
     </section>
@@ -885,15 +548,181 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JAVASCRIPT & DATA CONFIGURATION -->
     <script>
-        // Toggle Mobile Menu
+        // ==========================================================
+        // DATA CONFIGURATION (येथे माहिती बदला / UPDATE DATA HERE)
+        // ==========================================================
+
+        // १. घोषणा (Marquee News)
+        const newsData = "ग्रामसभा दिनांक १५ ऑगस्ट रोजी आयोजित केली आहे. | पाणी पट्टी आणि घरपट्टी ३१ मार्च पूर्वी भरा. | केर-भेकुर्ली गावात प्लास्टिक बंदी लागू.";
+
+        // २. महाराष्ट्र राज्याचे नेतृत्व (State Leaders)
+        const leadersData = [
+            { name: "श्री. देवेंद्र फडणवीस", role: "माननीय मुख्यमंत्री", img: "https://anikfin.com/Ker/cm.png" },
+            { name: "श्री. एकनाथ शिंदे", role: "माननीय उपमुख्यमंत्री", img: "https://anikfin.com/Ker/shinde.png" },
+            { name: "श्री. अजित पवार", role: "माननीय उपमुख्यमंत्री", img: "https://www.loksatta.com/wp-content/uploads/2023/07/Ajit-Pawar-4.jpg" }
+        ];
+
+        // ३. गाव एक दृष्टीक्षेपात (Stats)
+        const statsData = [
+            { num: "१२,५००", label: "एकूण लोकसंख्या", icon: "fas fa-users" },
+            { num: "१,२००", label: "एकूण घरसंख्या", icon: "fas fa-home" },
+            { num: "८८.५%", label: "साक्षरता दर", icon: "fas fa-graduation-cap" },
+            { num: "९", label: "प्रभाग", icon: "fas fa-map-marked-alt" },
+            { num: "१०", label: "पाण्याचे स्त्रोत", icon: "fas fa-hand-holding-water" }
+        ];
+
+        // ४. प्रगती मीटर (Progress)
+        const progressData = [
+            { title: "स्वच्छतागृह बांधणी", icon: "fas fa-restroom", percent: "९२%", detail: "१२०० पैकी ११०४", color: "#3b82f6" },
+            { title: "नळ जोडणी कव्हरेज", icon: "fas fa-faucet", percent: "८८%", detail: "१२०० पैकी १०५६", color: "#06b6d4" },
+            { title: "वीजपुरवठा असलेली घरे", icon: "fas fa-lightbulb", percent: "९८%", detail: "१२०० पैकी ११९६", color: "#eab308" },
+            { title: "वृक्षारोपण (लक्ष्य: १००००)", icon: "fas fa-tree", percent: "६५%", detail: "६५०० वृक्ष लागवड", color: "#22c55e" }
+        ];
+
+        // ५. पदाधिकारी व कर्मचारी (Members) - येथे नावे बदला
+        const membersData = [
+            { name: "सौ. रुक्मिणी मुकुंद नाईक", role: "सरपंच", phone: "९६२३०५०६२४", img: "https://anikfin.com/Ker/staff/1.png", type: "sarpanch" },
+            { name: "श्री. तेजस तुकाराम देसाई", role: "उपसरपंच", phone: "९१५८५१८९०८", img: "https://anikfin.com/Ker/staff/12.png", type: "sarpanch" },
+            { name: "श्री. संदीप भगवान पाटील", role: "ग्रामसेवक", phone: "९४०५९९६९३९", img: "https://anikfin.com/Ker/staff/2.png", type: "staff" },
+            { name: "श्री. लक्ष्मण भाऊ धारे", role: "सदस्य", phone: "८७६६०५६४३५", img: "https://anikfin.com/Ker/staff/5.png", type: "member" },
+            { name: "सौ. प्रियंका मंगेश देसाई", role: "सदस्य", phone: "७५८८६३१२८९", img: "https://anikfin.com/Ker/staff/6.png", type: "member" },
+            { name: "सौ. मेघना महादेव देसाई", role: "सदस्य", phone: "७५८८३६३९७०", img: "https://anikfin.com/Ker/staff/7.png", type: "member" },
+            { name: "सौ. लक्ष्मी नारायण घुर्ये", role: "सदस्य", phone: "९४२०७३२४१४", img: "https://anikfin.com/Ker/staff/6.png", type: "member" },
+            { name: "सौ. गायत्री गणपत देसाई", role: "सदस्य", phone: "९४०४७१०४२४", img: "https://anikfin.com/Ker/staff/8.png", type: "member" },
+            { name: "श्री. यशवंत राजाराम देसाई", role: "सदस्य", phone: "७५८८८२९४२४", img: "https://anikfin.com/Ker/staff/9.png", type: "member" },
+            { name: "सौ. कोमल अजित भागवत", role: "केंद्रचालक", phone: "९४०५३३५८३८", img: "https://anikfin.com/Ker/staff/11.png", type: "staff" },
+            { name: "श्री. विनायक विठ्ठल देसाई", role: "हंगामी नळ कामगार", phone: "९४२११८०२१०", img: "https://anikfin.com/Ker/staff/10.png", type: "staff" },
+            { name: "श्री. शंकर शांताराम देसाई", role: "शिपाई", phone: "८२७५५८६४८३", img: "https://anikfin.com/Ker/staff/9.png", type: "staff" },
+            { name: "श्री. महेंद्र विष्णू देसाई", role: "ग्राम रोजगार सेवक", phone: "९४०५५६२४८५", img: "https://anikfin.com/Ker/staff/14.png", type: "staff" }
+        ];
+
+        // ६. ई-सेवा आणि सुविधा (Services)
+        const servicesData = [
+            { title: "पदाधिकारी", desc: "सरपंच व सदस्य मंडळ", icon: "fas fa-users" },
+            { title: "दाखले", desc: "जन्म-मृत्यू, रहिवासी दाखले", icon: "fas fa-file-alt" },
+            { title: "पाणी पुरवठा", desc: "योजना व तक्रार निवारण", icon: "fas fa-hand-holding-water" },
+            { title: "घरपट्टी / कर", desc: "कराची माहिती व भरणा", icon: "fas fa-landmark" },
+            { title: "ग्रामसभा", desc: "इतिवृत्त आणि नोटीस", icon: "fas fa-bullhorn" },
+            { title: "गॅलरी", desc: "विकास कामांचे फोटो", icon: "fas fa-image" },
+            { title: "संपर्क", desc: "आम्हाला संपर्क करा", icon: "fas fa-phone-alt" },
+            { title: "डाउनलोड", desc: "अर्जाचे नमुने", icon: "fas fa-download" }
+        ];
+
+        // ७. स्लाइडर इमेजेस (Slider Images)
+        const sliderImages = [
+            "https://anikfin.com/Ker/1.jpg",
+            "https://anikfin.com/Ker/3.jpg", 
+            "https://anikfin.com/Ker/4.jpg",
+            "https://anikfin.com/Ker/5.jpg",
+            "https://anikfin.com/Ker/6.jpg",
+            "https://anikfin.com/Ker/7.jpg",
+            "https://anikfin.com/Ker/8.jpg",
+            "https://anikfin.com/Ker/9.jpg",
+            "https://anikfin.com/Ker/10.jpg",
+            "https://anikfin.com/Ker/11.jpg",
+            "https://anikfin.com/Ker/12.jpg",
+            "https://anikfin.com/Ker/13.jpg",
+            "https://anikfin.com/Ker/14.jpg",
+            "https://anikfin.com/Ker/15.jpg"
+        ];
+
+        // ==========================================================
+        // RENDERING LOGIC (DO NOT EDIT BELOW THIS LINE)
+        // ==========================================================
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Render News
+            document.getElementById('marquee-text').innerText = newsData;
+
+            // 2. Render Leaders
+            const leadersContainer = document.getElementById('leaders-container');
+            leadersData.forEach(l => {
+                leadersContainer.innerHTML += `
+                    <div class="leader-card">
+                        <div class="leader-img-wrapper"><img src="${l.img}" alt="${l.name}"></div>
+                        <div class="leader-info">
+                            <p class="leader-role">${l.role}</p>
+                            <h3 class="leader-name">${l.name}</h3>
+                        </div>
+                    </div>`;
+            });
+
+            // 3. Render Stats
+            const statsContainer = document.getElementById('stats-container');
+            statsData.forEach((s, index) => {
+                let colorClass = index === 1 ? '#ef4444' : index === 2 ? '#0284c7' : index === 3 ? '#ea580c' : '#166534';
+                let bgClass = index === 1 ? '#fee2e2' : index === 2 ? '#e0f2fe' : index === 3 ? '#ffedd5' : '#dcfce7';
+                
+                statsContainer.innerHTML += `
+                    <div class="stat-card" style="border-bottom-color: ${colorClass}">
+                        <div class="stat-icon-wrapper" style="background: ${bgClass}; color: ${colorClass}"><i class="${s.icon}"></i></div>
+                        <span class="stat-number">${s.num}</span><span class="stat-label">${s.label}</span>
+                    </div>`;
+            });
+
+            // 4. Render Progress
+            const progressContainer = document.getElementById('progress-container');
+            progressData.forEach(p => {
+                progressContainer.innerHTML += `
+                    <div class="progress-card">
+                        <div class="progress-header"><div class="progress-title"><i class="${p.icon}"></i> ${p.title}</div></div>
+                        <div class="progress-track"><div class="progress-fill" style="width: ${p.percent.replace('%','')}; background-color: ${p.color};"></div></div>
+                        <div class="progress-meta"><span class="progress-percent">${p.percent}</span><span>${p.detail}</span></div>
+                    </div>`;
+            });
+
+            // 5. Render Members
+            const membersContainer = document.getElementById('members-container');
+            membersData.forEach(m => {
+                let cardClass = m.type === 'sarpanch' ? 'member-card sarpanch' : 'member-card';
+                membersContainer.innerHTML += `
+                    <div class="${cardClass}">
+                        <div class="member-photo-box"><img src="${m.img}" alt="${m.name}"></div>
+                        <div class="member-details">
+                            <span class="role-badge">${m.role}</span>
+                            <h3 class="member-name">${m.name}</h3>
+                            <div class="member-contact"><i class="fas fa-phone-alt"></i> ${m.phone}</div>
+                        </div>
+                    </div>`;
+            });
+
+            // 6. Render Services
+            const servicesContainer = document.getElementById('services-container');
+            servicesData.forEach(s => {
+                servicesContainer.innerHTML += `
+                    <div class="service-card">
+                        <div class="icon-circle"><i class="${s.icon}"></i></div>
+                        <h3>${s.title}</h3>
+                        <p>${s.desc}</p>
+                    </div>`;
+            });
+
+            // 7. Render Slider
+            const sliderContainer = document.getElementById('hero-slider-container');
+            sliderImages.forEach((img, index) => {
+                let activeClass = index === 0 ? 'active' : '';
+                sliderContainer.innerHTML += `<div class="hero-slide ${activeClass}"><img src="${img}" alt="Slide"></div>`;
+            });
+
+            // Hero Slider Logic
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.hero-slide');
+            setInterval(() => {
+                if(slides.length > 0) {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }
+            }, 4000);
+        });
+
+        // Mobile Menu Logic
         function toggleMenu() {
             const nav = document.getElementById('navMenu');
             const icon = document.querySelector('.mobile-toggle i');
-            
             nav.classList.toggle('active');
-            
             if(nav.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
@@ -902,8 +731,6 @@
                 icon.classList.add('fa-bars');
             }
         }
-
-        // Close menu on link click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('navMenu').classList.remove('active');
@@ -911,19 +738,6 @@
                 document.querySelector('.mobile-toggle i').classList.add('fa-bars');
             });
         });
-
-        // HERO SLIDER SCRIPT
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        // Change slide every 4 seconds
-        setInterval(nextSlide, 4000);
     </script>
 </body>
 </html>
