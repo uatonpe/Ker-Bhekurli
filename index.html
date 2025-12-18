@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मुख्यपृष्ठ - आजगांव ग्रामपंचायत | Digital Grampanchayat</title>
+    <meta name="description" content="आजगांव ग्रामपंचायत अधिकृत संकेतस्थळ - योजना, विकास कामे आणि नागरिक सेवा regarding Ajgaon Village.">
+    
+    <!-- Google Fonts (Pro Marathi & English Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES (EASY TO UPDATE COLORS) --- */
+        :root {
+            --primary-color: #166534; /* Deep Green */
+            --secondary-color: #ea580c; /* Saffron/Orange */
+            --accent-color: #15803d; /* Lighter Green */
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --light-bg: #f3f4f6;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        /* --- GLOBAL RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-padding { padding: 60px 0; }
+        .text-center { text-align: center; }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-links a { margin-left: 15px; opacity: 0.9; }
+        .top-links a:hover { opacity: 1; text-decoration: underline; }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .emblem { height: 50px; }
+        .village-name h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+        .village-name p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Nav Menu */
+        .nav-menu { display: flex; gap: 30px; }
+        .nav-link {
+            font-weight: 600;
+            color: var(--text-dark);
+            position: relative;
+        }
+        .nav-link:hover { color: var(--primary-color); }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 600px;
+            position: relative;
+            background-image: url('https://assets.mahagrampanchayat.in/ajgaon/images/1762575247085-hero-images_1762575236066-AjgaonVetoba.png'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--white);
+            animation: fadeIn Up 1s ease;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #d1fae5;
+        }
+
+        /* --- SEARCH BAR --- */
+        .search-wrapper {
+            margin-top: -30px;
+            position: relative;
+            z-index: 20;
+            padding: 0 20px;
+        }
+        .search-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+        }
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 10px 20px;
+            outline: none;
+            font-size: 1rem;
+            border-radius: 50px;
+        }
+        .search-box button {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .search-box button:hover { background: var(--secondary-color); }
+
+        /* --- MARQUEE (NEWS) --- */
+        .news-ticker {
+            background: var(--white);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .news-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .news-label {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+            white-space: nowrap;
+            margin-right: 15px;
+        }
+        marquee { font-weight: 500; color: var(--primary-color); }
+
+        /* --- LEADERS SECTION --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+        .section-title h2::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .leaders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .leader-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+            border-top: 4px solid var(--secondary-color);
+        }
+        .leader-card:hover { transform: translateY(-10px); }
+        .leader-img-wrapper {
+            height: 300px;
+            position: relative;
+        }
+        .leader-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+        .leader-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 20px;
+            color: var(--white);
+        }
+        .leader-name { font-size: 1.2rem; font-weight: 700; margin-top: 5px; }
+        .leader-role { font-size: 0.9rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- SERVICES GRID --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #eee;
+            cursor: pointer;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            background: linear-gradient(to bottom right, #ffffff, #f0fdf4);
+        }
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: #dcfce7;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            transition: var(--transition);
+        }
+        .service-card:hover .icon-box {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        .service-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .service-card p { font-size: 0.9rem; color: var(--text-light); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: linear-gradient(to right, #064e3b, #065f46);
+            color: var(--white);
+            padding-top: 60px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #fbbf24; /* Gold */
+            border-left: 3px solid #fbbf24;
+            padding-left: 10px;
+        }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            color: #d1fae5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-links a:hover { color: var(--white); padding-left: 5px; }
+        .contact-info li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #d1fae5;
+        }
+        .copyright {
+            background: rgba(0,0,0,0.2);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- RESPONSIVE CSS --- */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                background: var(--white);
+                width: 80%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                padding: 40px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: 0.4s ease;
+            }
+            .nav-menu.active { right: 0; }
+            .mobile-toggle { display: block; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar .container { flex-direction: column; gap: 5px; text-align: center; }
+            .header-main { padding: 10px 0; }
+            .village-name h1 { font-size: 1.2rem; }
+            .hero { height: 400px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .leader-img-wrapper { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="govt-text">महाराष्ट्र शासन | Government of Maharashtra</div>
+            <div class="top-links">
+                <a href="#"><i class="fas fa-user-lock"></i> प्रशासक लॉगिन</a>
+                <a href="#"><i class="fas fa-sitemap"></i> साइटमॅप</a>
+                <a href="#"><i class="fas fa-language"></i> मराठी / English</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header>
+        <div class="container header-main">
+            <a href="/" class="logo-area">
+                <!-- Use a generic Ashoka Emblem URL or your local file -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="emblem">
+                <div class="village-name">
+                    <h1>ग्रामपंचायत आजगांव</h1>
+                    <p>ता. सावंतवाडी | जि. सिंधुदुर्ग</p>
+                </div>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- Navigation -->
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#" class="nav-link">मुख्यपृष्ठ</a></li>
+                    <li><a href="#about" class="nav-link">आमच्याबद्दल</a></li>
+                    <li><a href="#services" class="nav-link">योजना</a></li>
+                    <li><a href="#projects" class="nav-link">विकास कामे</a></li>
+                    <li><a href="#gallery" class="nav-link">गॅलरी</a></li>
+                    <li><a href="#contact" class="nav-link">संपर्क</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <h1>आजगांव वेतोबा</h1>
+            <p>सुंदर गाव, स्वच्छ गाव, समृद्ध गाव</p>
+            <a href="#services" class="btn btn-primary" style="border-color: white; color: white;">अधिक माहिती</a>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <div class="search-wrapper">
+        <div class="search-box">
+            <input type="text" placeholder="वेबसाइटवर शोधा... (योजना, कार्यक्रम, कागदपत्रे)">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+
+    <!-- News Marquee -->
+    <div class="news-ticker">
+        <div class="news-container">
+            <span class="news-label">ताज्या बातम्या</span>
+            <marquee onmouseover="this.stop()" onmouseout="this.start()">
+                येत्या २६ जानेवारी रोजी विशेष ग्रामसभा आयोजित करण्यात आली आहे. | पाणी पट्टी आणि घरपट्टी वेळेत भरून सहकार्य करा. | नवीन सौर ऊर्जा प्रकल्प मंजुरी मिळाली आहे.
+            </marquee>
+        </div>
+    </div>
+
+    <!-- Leaders Section -->
+    <section class="section-padding" style="background: #fff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>महाराष्ट्र राज्याचे नेतृत्व</h2>
+                <p>प्रगतीच्या दिशेने भक्कम पाऊल</p>
+            </div>
+            
+            <div class="leaders-grid">
+                <!-- Leader 1 -->
+                <div class="leader-card">
+                    <div class="leader-img-wrapper">
+                        <!-- Using placeholder images - replace with actual URLs -->
+                        <img src="https://devendrafadnavis.in/wp-content/uploads/2023/07/Devendra-Fadnavis-Dy-CM-Maharashtra.jpg" alt="Devendra Fadnavis">
+                        <div class="leader-overlay">
+                            <p class="leader-role">माननीय मुख्यमंत्री</p>
+                            <h3 class="leader-name">श्री. देवेंद्र फडणवीस</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leader 2 -->
+                <div class="leader-card">
+                    <div class="leader-img-wrapper">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Eknath_Shinde_2024.jpg" alt="Eknath Shinde">
+                        <div class="leader-overlay">
+                            <p class="leader-role">माननीय उपमुख्यमंत्री</p>
+                            <h3 class="leader-name">श्री. एकनाथ शिंदे</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leader 3 -->
+                <div class="leader-card">
+                    <div class="leader-img-wrapper">
+                        <img src="https://www.loksatta.com/wp-content/uploads/2023/07/Ajit-Pawar-4.jpg" alt="Ajit Pawar">
+                        <div class="leader-overlay">
+                            <p class="leader-role">माननीय उपमुख्यमंत्री</p>
+                            <h3 class="leader-name">श्री. अजित पवार</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Features Section -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>सेवा आणि सुविधा</h2>
+                <p>नागरिकांसाठी उपलब्ध डिजिटल सेवा</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Item 1 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-users"></i></div>
+                    <h3>पदाधिकारी</h3>
+                    <p>सरपंच आणि सदस्यांची माहिती</p>
+                </div>
+                <!-- Item 2 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-building-user"></i></div>
+                    <h3>विकास प्रकल्प</h3>
+                    <p>चालू आणि पूर्ण कामे</p>
+                </div>
+                <!-- Item 3 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-file-invoice"></i></div>
+                    <h3>शासकीय योजना</h3>
+                    <p>लाभार्थी यादी आणि अर्ज</p>
+                </div>
+                <!-- Item 4 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-bullhorn"></i></div>
+                    <h3>घोषणा</h3>
+                    <p>महत्वाच्या सूचना आणि नोटीस</p>
+                </div>
+                <!-- Item 5 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-briefcase"></i></div>
+                    <h3>रोजगार</h3>
+                    <p>स्थानिक नोकरी संधी</p>
+                </div>
+                <!-- Item 6 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-images"></i></div>
+                    <h3>गॅलरी</h3>
+                    <p>गावाचे फोटो आणि व्हिडिओ</p>
+                </div>
+                <!-- Item 7 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-file-download"></i></div>
+                    <h3>दस्तऐवज</h3>
+                    <p>दाखले आणि फॉर्म्स</p>
+                </div>
+                <!-- Item 8 -->
+                <div class="service-card">
+                    <div class="icon-box"><i class="fas fa-phone"></i></div>
+                    <h3>संपर्क</h3>
+                    <p>तक्रार निवारण आणि मदत</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container footer-grid">
+            <!-- Col 1 -->
+            <div class="footer-col">
+                <h3>आजगांव ग्रामपंचायत</h3>
+                <p style="opacity: 0.8; margin-bottom: 20px;">
+                    आधुनिक तंत्रज्ञान आणि पारंपारिक संस्कृतीचा संगम. आपल्या गावाच्या विकासासाठी कटिबद्ध.
+                </p>
+                <div style="display: flex; gap: 15px;">
+                    <a href="#" style="background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 5px;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 5px;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 5px;"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="footer-col">
+                <h3>महत्त्वाचे दुवे</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> मुख्यपृष्ठ</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> आमच्याबद्दल</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> गोपनीयता धोरण</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> नियम आणि अटी</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="footer-col">
+                <h3>शासकीय लिंक्स</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> महाराष्ट्र शासन</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> ई-ग्रामस्वराज</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> आपले सरकार</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> प्रधानमंत्री आवास योजना</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4 -->
+            <div class="footer-col">
+                <h3>संपर्क माहिती</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt" style="margin-top: 5px;"></i>
+                        <span>ग्रामपंचायत कार्यालय आजगांव,<br>ता. सावंतवाडी, जि. सिंधुदुर्ग - 416518</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>(02363) 264997</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>gpajgaon1@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div class="container">
+                <p>&copy; 2025 आजगांव ग्रामपंचायत. सर्व हक्क राखीव. | Design by YourName</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Functionality -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('navMenu');
+            const toggleBtn = document.querySelector('.mobile-toggle i');
+            
+            nav.classList.toggle('active');
+            
+            // Change Icon
+            if(nav.classList.contains('active')) {
+                toggleBtn.classList.remove('fa-bars');
+                toggleBtn.classList.add('fa-times');
+            } else {
+                toggleBtn.classList.remove('fa-times');
+                toggleBtn.classList.add('fa-bars');
+            }
+        }
+
+        // Close menu when clicking a link (Mobile UX)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+                document.querySelector('.mobile-toggle i').classList.remove('fa-times');
+                document.querySelector('.mobile-toggle i').classList.add('fa-bars');
+            });
+        });
+
+        // Sticky Header Effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
+            } else {
+                header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.05)";
+            }
+        });
+    </script>
+</body>
+</html>
