@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>छायाचित्र दालन - ग्रुप ग्रामपंचायत केर-भेकुर्ली | Gallery</title>
+    <meta name="description" content="विकास कामे, कार्यक्रम आणि बातम्यांचे छायाचित्र दालन - ग्रामपंचायत केर-भेकुर्ली.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES (MATCHING HOMEPAGE) --- */
+        :root {
+            --primary-color: #166534;
+            --primary-light: #dcfce7;
+            --secondary-color: #ea580c;
+            --accent-color: #15803d; 
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --light-bg: #f3f4f6;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* --- GLOBAL RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* --- HEADER STYLES (SAME AS HOME) --- */
+        .top-bar { background: linear-gradient(90deg, #1e3a8a, #2563eb); color: var(--white); padding: 8px 0; font-size: 0.8rem; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        
+        header { background: var(--white); box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
+        .header-main { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; max-width: 1280px; margin: 0 auto; padding: 15px 20px; }
+        .brand-area { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 70px; width: auto; }
+        .title-block { text-align: left; }
+        .main-title { color: var(--primary-color); font-size: 1.6rem; font-weight: 800; line-height: 1.2; }
+        .sub-title { color: var(--secondary-color); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; }
+
+        /* Nav Menu */
+        .nav-wrapper { background: var(--primary-color); }
+        .nav-menu { display: flex; justify-content: center; max-width: 1280px; margin: 0 auto; }
+        .nav-link { display: block; padding: 12px 25px; color: var(--white); font-weight: 500; font-size: 0.95rem; }
+        .nav-link:hover { background: rgba(255,255,255,0.15); color: #fbbf24; }
+
+        /* --- PAGE BANNER --- */
+        .page-banner {
+            background: linear-gradient(rgba(22, 101, 52, 0.8), rgba(22, 101, 52, 0.8)), url('https://anikfin.com/Ker/1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        .page-banner h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        .breadcrumb { font-size: 0.9rem; opacity: 0.9; }
+        .breadcrumb a:hover { color: #fbbf24; text-decoration: underline; }
+
+        /* --- GALLERY GRID STYLES --- */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 60px 0; }
+        
+        .filter-buttons { text-align: center; margin-bottom: 40px; }
+        .filter-btn {
+            background: var(--white); border: 1px solid #ddd; padding: 10px 25px; 
+            border-radius: 50px; cursor: pointer; font-weight: 600; margin: 0 5px;
+            transition: var(--transition); color: var(--text-light);
+        }
+        .filter-btn.active, .filter-btn:hover { background: var(--secondary-color); color: var(--white); border-color: var(--secondary-color); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* Loading Animation */
+        .loading-spinner { text-align: center; width: 100%; padding: 40px; font-size: 1.2rem; color: var(--primary-color); display: none; }
+
+        .gallery-item {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+            height: 250px; /* Fixed height for uniformity */
+            display: none; /* Hidden by default until image loads */
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.08); }
+
+        .overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: var(--transition);
+        }
+        .gallery-item:hover .overlay { opacity: 1; }
+        .zoom-icon {
+            color: var(--white); font-size: 2rem;
+            background: var(--secondary-color);
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* --- LIGHTBOX (POPUP) --- */
+        .lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center; justify-content: center;
+            padding: 20px;
+        }
+        .lightbox.active { display: flex; animation: zoomIn 0.3s ease; }
+        
+        .lightbox-content { position: relative; max-width: 90%; max-height: 90vh; }
+        .lightbox-content img { max-height: 85vh; border: 4px solid var(--white); border-radius: 4px; }
+        
+        .close-lightbox {
+            position: absolute; top: -40px; right: 0;
+            color: var(--white); font-size: 2rem; cursor: pointer;
+        }
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            color: var(--white); font-size: 2rem; cursor: pointer;
+            background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 5px;
+            transition: var(--transition);
+        }
+        .lightbox-nav:hover { background: var(--secondary-color); }
+        .prev-btn { left: -60px; }
+        .next-btn { right: -60px; }
+
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        /* --- FOOTER (SAME AS HOME) --- */
+        footer { background: #0f172a; color: #cbd5e1; padding-top: 50px; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; padding-bottom: 30px; }
+        .copyright { background: #020617; padding: 20px 0; text-align: center; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .page-banner { padding: 50px 0; }
+            .page-banner h1 { font-size: 1.8rem; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .gallery-item { height: 180px; }
+            .prev-btn { left: 10px; top: unset; bottom: -50px; }
+            .next-btn { right: 10px; top: unset; bottom: -50px; }
+            .header-main { flex-direction: column; text-align: center; }
+            .nav-menu { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div>महाराष्ट्र शासन | Government of Maharashtra</div>
+            <a href="https://uatonpe.github.io/Ker-Bhekurli/"><i class="fas fa-home"></i> मुख्यपृष्ठ</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-main">
+            <div class="brand-area">
+                <img src="https://anikfin.com/Ker/logo.jpg" alt="Logo" class="logo-img">
+                <div class="title-block">
+                    <span class="sub-title">आदर्श गाव</span>
+                    <h2 class="main-title">ग्रुप ग्रामपंचायत केर-भेकुर्ली</h2>
+                </div>
+            </div>
+            <img src="https://anikfin.com/Ker/zp.png" alt="ZP Logo" class="logo-img">
+        </div>
+        <div class="nav-wrapper">
+            <ul class="nav-menu">
+                <li><a href="https://uatonpe.github.io/Ker-Bhekurli/" class="nav-link">मुख्यपृष्ठ</a></li>
+                        </ul>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>छायाचित्र दालन</h1>
+            <div class="breadcrumb">
+                <a href="index.html">मुख्यपृष्ठ</a> / <span>गॅलरी</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section-padding">
+        <div class="container">
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterGallery('all')">सर्व फोटो</button>
+                <button class="filter-btn" onclick="filterGallery('news')">बातम्या (News Cuttings)</button>
+            </div>
+
+            <div class="loading-spinner" id="loader">
+                <i class="fas fa-spinner fa-spin"></i> फोटो लोड होत आहेत... कृपया प्रतीक्षा करा.
+            </div>
+
+            <!-- The Grid where images will be injected -->
+            <div class="gallery-grid" id="gallery-container">
+                <!-- Javascript will insert images here -->
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Lightbox Popup -->
+    <div class="lightbox" id="lightbox-modal">
+        <div class="lightbox-content">
+            <i class="fas fa-times close-lightbox" onclick="closeLightbox()"></i>
+            <img src="" id="lightbox-img" alt="Full view">
+            <i class="fas fa-chevron-left lightbox-nav prev-btn" onclick="changeImage(-1)"></i>
+            <i class="fas fa-chevron-right lightbox-nav next-btn" onclick="changeImage(1)"></i>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <h3 style="color:#fff; margin-bottom:15px;">ग्रामपंचायत केर-भेकुर्ली</h3>
+                <p>स्वच्छ, सुंदर आणि समृद्ध गाव.</p>
+            </div>
+            <div style="text-align: right;">
+                <p><i class="fas fa-phone"></i> (02363) XXXXXX</p>
+                <p><i class="fas fa-envelope"></i> contact@kerbhekurli.in</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 ग्रुप ग्रामपंचायत केर-भेकुर्ली. सर्व हक्क राखीव.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR AUTO-LOADING IMAGES -->
+    <script>
+        // CONFIGURATION
+        const imageFolderUrl = "https://anikfin.com/Ker/Photo/"; // Path to your folder
+        const maxImagesToCheck = 50; // Script will check for images named 1.jpg to 50.jpg
+        const fileExtension = ".jpg"; // Ensure all your photos are .jpg
+        
+        const galleryContainer = document.getElementById('gallery-container');
+        const loader = document.getElementById('loader');
+        
+        let loadedImagesList = []; // Stores valid image URLs for the lightbox
+        let currentLightboxIndex = 0;
+
+        // 1. FUNCTION TO AUTO-DETECT AND LOAD IMAGES
+        async function loadGalleryImages() {
+            loader.style.display = "block";
+            
+            // We loop from 1 to maxImagesToCheck
+            // We assume you name files: 1.jpg, 2.jpg, 3.jpg ...
+            
+            const imagePromises = [];
+
+            for (let i = 1; i <= maxImagesToCheck; i++) {
+                const imageUrl = `${imageFolderUrl}${i}${fileExtension}`;
+                
+                // Create a promise to check if image loads successfully
+                const p = new Promise((resolve) => {
+                    const img = new Image();
+                    img.src = imageUrl;
+                    
+                    img.onload = () => {
+                        // Image exists, add to DOM
+                        resolve({ success: true, url: imageUrl, id: i });
+                    };
+                    
+                    img.onerror = () => {
+                        // Image does not exist (404), skip it
+                        resolve({ success: false });
+                    };
+                });
+                imagePromises.push(p);
+            }
+
+            // Wait for all checks to finish
+            const results = await Promise.all(imagePromises);
+            
+            // Filter only successful images
+            const validImages = results.filter(r => r.success);
+            
+            // Add them to the page
+            if (validImages.length > 0) {
+                validImages.forEach((imgData, index) => {
+                    createGalleryItem(imgData.url, index);
+                    loadedImagesList.push(imgData.url);
+                });
+            } else {
+                galleryContainer.innerHTML = "<p style='text-align:center; width:100%;'>सध्या कोणतेही फोटो उपलब्ध नाहीत.</p>";
+            }
+
+            loader.style.display = "none";
+        }
+
+        // 2. HELPER TO CREATE HTML ELEMENTS
+        function createGalleryItem(url, index) {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
+            div.setAttribute('onclick', `openLightbox(${index})`);
+            
+            div.innerHTML = `
+                <img src="${url}" alt="Photo ${index + 1}" loading="lazy">
+                <div class="overlay">
+                    <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+                </div>
+            `;
+            
+            galleryContainer.appendChild(div);
+            // Trigger display
+            setTimeout(() => { div.style.display = 'block'; }, 50 * index);
+        }
+
+        // 3. LIGHTBOX LOGIC
+        const lightbox = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            lightboxImg.src = loadedImagesList[index];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            currentLightboxIndex += direction;
+            
+            // Loop navigation
+            if (currentLightboxIndex >= loadedImagesList.length) currentLightboxIndex = 0;
+            if (currentLightboxIndex < 0) currentLightboxIndex = loadedImagesList.length - 1;
+            
+            lightboxImg.src = loadedImagesList[currentLightboxIndex];
+        }
+
+        // Close on outside click
+        lightbox.addEventListener('click', (e) => {
+            if(e.target === lightbox) closeLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') changeImage(1);
+            if (e.key === 'ArrowLeft') changeImage(-1);
+        });
+
+        // 4. FILTER MOCKUP (Since we don't have categories in filenames yet)
+        function filterGallery(type) {
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // For now, simply show all as we are auto-fetching based on numbers
+            // If you want separate news, name them news1.jpg, news2.jpg and create a separate loop
+            if(type === 'all') {
+                // Logic to show all
+            }
+        }
+
+        // INITIALIZE
+        document.addEventListener('DOMContentLoaded', loadGalleryImages);
+
+    </script>
+</body>
+</html>
