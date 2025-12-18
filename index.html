@@ -159,6 +159,7 @@
             text-align: center;
             color: var(--white);
             animation: fadeInUp 1s ease;
+            width: 90%; /* Ensure text doesn't touch edges */
         }
         .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         .hero p { font-size: 1.4rem; margin-bottom: 30px; color: #e2e8f0; font-weight: 500; }
@@ -174,15 +175,15 @@
             max-width: 700px; margin: 0 auto; background: var(--white); padding: 8px;
             border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; border: 1px solid #e5e7eb;
         }
-        .search-box input { flex: 1; border: none; padding: 12px 25px; outline: none; font-size: 1rem; border-radius: 50px; }
+        .search-box input { flex: 1; border: none; padding: 12px 25px; outline: none; font-size: 1rem; border-radius: 50px; min-width: 0; }
         .search-box button {
             background: var(--secondary-color); color: var(--white); border: none; width: 45px; height: 45px;
-            border-radius: 50%; cursor: pointer; transition: var(--transition);
+            border-radius: 50%; cursor: pointer; transition: var(--transition); flex-shrink: 0;
         }
         .search-box button:hover { background: var(--primary-color); }
 
         .news-ticker { background: var(--white); border-bottom: 1px solid #e5e7eb; padding: 12px 0; margin-top: 25px; }
-        .news-wrapper { display: flex; align-items: center; }
+        .news-wrapper { display: flex; align-items: center; overflow: hidden; }
         .news-label { background: var(--primary-color); color: var(--white); padding: 4px 12px; font-size: 0.8rem; border-radius: 4px; margin-right: 15px; white-space: nowrap; }
         marquee { font-weight: 500; color: #dc2626; font-size: 0.95rem; }
 
@@ -214,10 +215,10 @@
         .progress-meta { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: var(--text-light); }
         .progress-percent { font-size: 1.2rem; font-weight: 800; color: var(--text-dark); }
 
-        /* --- NEW PADADHIKARI SECTION CSS --- */
+        /* --- PADADHIKARI SECTION CSS --- */
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 30px;
         }
         .member-card {
@@ -301,34 +302,110 @@
         .contact-list i { color: var(--secondary-color); margin-top: 5px; }
         .copyright { background: #020617; padding: 25px 0; text-align: center; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1); }
 
-        /* --- RESPONSIVE --- */
+        /* ========================================= */
+        /* --- RESPONSIVE OPTIMIZATIONS (FIXED) --- */
+        /* ========================================= */
+        
         @media (max-width: 992px) {
-            .brand-area { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .title-block { order: 2; width: 100%; margin-top: 10px; }
-            .logo-img { height: 60px; order: 1; }
-            .zp-logo { order: 3; }
-            
-            .nav-menu {
-                flex-direction: column; display: none; background: var(--white);
-                position: absolute; top: 100%; left: 0; width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            /* Header Adjustment for Tablet/Small Laptop */
+            .brand-area { 
+                flex-direction: column; 
+                justify-content: center; 
+                text-align: center; 
+                gap: 10px; 
             }
-            .nav-menu.active { display: block; }
-            .nav-link { color: var(--text-dark); border-bottom: 1px solid #eee; text-align: center; }
-            .nav-link:hover { color: var(--primary-color); background: #f9f9f9; }
+            .title-block { width: 100%; margin: 5px 0; }
+            .logo-img { height: 70px; margin: 0 auto; }
+            .mobile-toggle { 
+                display: block; 
+                position: absolute; 
+                right: 20px; 
+                top: 20px;
+                padding: 10px;
+                background: #f1f5f9;
+                border-radius: 8px;
+            }
             
-            .mobile-toggle { display: block; position: absolute; right: 20px; top: 30px; }
-            .header-main { padding-bottom: 10px; }
+            /* Full Width Navigation Menu */
+            .nav-menu {
+                flex-direction: column; 
+                display: none; 
+                background: var(--white);
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                border-top: 3px solid var(--secondary-color);
+            }
+            .nav-link { 
+                color: var(--text-dark); 
+                border-bottom: 1px solid #eee; 
+                text-align: left;
+                padding: 15px 25px;
+            }
+            .nav-link:hover { padding-left: 30px; color: var(--primary-color); background: #f8fafc; }
         }
 
         @media (max-width: 768px) {
-            .top-bar .container { flex-direction: column; gap: 5px; }
-            .hero { height: 400px; }
-            .hero h1 { font-size: 2.2rem; }
+            /* General Layout Tweaks */
+            .section-padding { padding: 40px 0; }
+            .section-title { margin-bottom: 30px; }
+            .section-title h2 { font-size: 1.8rem; }
+            
+            /* Top Bar Stacking */
+            .top-bar .container { flex-direction: column; gap: 5px; text-align: center; }
+            
+            /* Header Elements */
+            .logo-img { height: 60px; }
             .main-title { font-size: 1.4rem; }
-            .logo-img { height: 50px; }
-            .leaders-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .sub-title { font-size: 0.8rem; }
+            .mobile-toggle { top: 15px; }
+
+            /* Hero Section */
+            .hero { height: 350px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; margin-bottom: 20px; }
+            .hero .btn { padding: 10px 20px; font-size: 0.8rem; }
+
+            /* Grids - Force 1 column for clean mobile look */
+            .stats-grid { grid-template-columns: 1fr; }
             .progress-grid { grid-template-columns: 1fr; }
-            .members-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+            
+            /* Padadhikari Card Fix - Make them full width & nice */
+            .members-grid { 
+                grid-template-columns: 1fr; /* Full width card */
+                gap: 20px;
+                padding: 0 10px; 
+            }
+            .member-photo-box { height: 320px; } /* Taller image for mobile */
+            
+            /* Leaders Section */
+            .leaders-grid { grid-template-columns: 1fr; max-width: 100%; }
+            .leader-img-wrapper { height: 350px; }
+
+            /* Services Grid - 2 columns is okay for icons, but 1 is safer for text */
+            .services-grid { grid-template-columns: 1fr; gap: 15px; }
+            .service-card { padding: 25px 15px; }
+            
+            /* Search Bar */
+            .search-box { width: 100%; border-radius: 10px; }
+            .search-box input { padding: 10px 15px; font-size: 0.9rem; }
+            .search-box button { width: 40px; height: 40px; }
+        }
+        
+        @media (max-width: 480px) {
+            /* Small Mobile Specifics */
+            .main-title { font-size: 1.25rem; line-height: 1.4; }
+            .location-text { font-size: 0.8rem; }
+            .logo-img { height: 55px; }
+            
+            .hero { height: 300px; }
+            .hero h1 { font-size: 1.6rem; }
+            
+            /* Compact Member Cards */
+            .member-photo-box { height: 280px; }
+            .member-name { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -356,6 +433,7 @@
                         <h1 class="main-title">ग्रुप ग्रामपंचायत केर-भेकुर्ली</h1>
                         <p class="location-text">ता. दोडामार्ग | जि. सिंधुदुर्ग</p>
                     </div>
+                    <!-- On mobile, this second logo will stack nicely now -->
                     <img src="https://anikfin.com/Ker/zp.png" alt="Zilla Parishad Logo" class="logo-img zp-logo">
                 </div>
                 <div class="mobile-toggle" onclick="toggleMenu()">
@@ -368,7 +446,7 @@
             <div class="container">
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#" class="nav-link">मुख्यपृष्ठ</a></li>
-                    <li><a href="#padadhikari" class="nav-link">पदाधिकारी</a></li> <!-- Added Link Here -->
+                    <li><a href="#padadhikari" class="nav-link">पदाधिकारी</a></li>
                     <li><a href="#services" class="nav-link">नागरिक सेवा</a></li>
                     <li><a href="#stats" class="nav-link">प्रगती अहवाल</a></li>
                     <li><a href="#projects" class="nav-link">विकास कामे</a></li>
@@ -379,7 +457,7 @@
         </div>
     </header>
 
-    <!-- HERO SECTION WITH GALLERY SLIDER -->
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-slider">
             <div class="hero-slide active"><img src="https://anikfin.com/Ker/1.jpg" alt="Slide 1"></div>
@@ -409,7 +487,7 @@
     <div class="container">
         <div class="search-container">
             <div class="search-box">
-                <input type="text" placeholder="वेबसाइटवर शोधा... (उदा. जन्म दाखला, घरपट्टी)">
+                <input type="text" placeholder="वेबसाइटवर शोधा...">
                 <button><i class="fas fa-search"></i></button>
             </div>
         </div>
@@ -500,8 +578,7 @@
         </div>
     </section>
 
-    <!-- ***** NEW SECTION: PADADHIKARI (OFFICE BEARERS) ***** -->
-    <!-- Extracted from your image -->
+    <!-- ***** PADADHIKARI (OFFICE BEARERS) ***** -->
     <section id="padadhikari" class="section-padding">
         <div class="container">
             <div class="section-title">
@@ -513,7 +590,6 @@
                 <!-- 1. Sarpanch -->
                 <div class="member-card sarpanch">
                     <div class="member-photo-box">
-                        <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/1.png" alt="Rukmini Naik">
                     </div>
                     <div class="member-details">
@@ -526,7 +602,6 @@
                 <!-- 2. Up-Sarpanch -->
                 <div class="member-card sarpanch">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/12.png" alt="Tejas Desai">
                     </div>
                     <div class="member-details">
@@ -539,7 +614,6 @@
                 <!-- 3. Gramsevak -->
                 <div class="member-card">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/2.png" alt="Sandeep Patil">
                     </div>
                     <div class="member-details">
@@ -552,7 +626,6 @@
                 <!-- 4. Member -->
                 <div class="member-card">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/5.png" alt="Laxman Dhare">
                     </div>
                     <div class="member-details">
@@ -565,7 +638,6 @@
                 <!-- 5. Member -->
                 <div class="member-card">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/6.png" alt="Priyanka Desai">
                     </div>
                     <div class="member-details">
@@ -578,7 +650,6 @@
                 <!-- 6. Member -->
                 <div class="member-card">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/7.png" alt="Meghna Desai">
                     </div>
                     <div class="member-details">
@@ -591,7 +662,6 @@
                 <!-- 7. Member -->
                 <div class="member-card">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/6.png" alt="Laxmi Ghurye">
                     </div>
                     <div class="member-details">
@@ -604,7 +674,6 @@
                 <!-- 8. Member -->
                 <div class="member-card">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/8.png" alt="Gayatri Desai">
                     </div>
                     <div class="member-details">
@@ -617,7 +686,6 @@
                 <!-- 9. Member -->
                 <div class="member-card">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/9.png" alt="Yashwant Desai">
                     </div>
                     <div class="member-details">
@@ -630,7 +698,6 @@
                 <!-- 10. Staff -->
                 <div class="member-card">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/11.png" alt="Komal Bhagwat">
                     </div>
                     <div class="member-details">
@@ -643,7 +710,6 @@
                 <!-- 11. Staff -->
                 <div class="member-card">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/10.png" alt="Vinayak Desai">
                     </div>
                     <div class="member-details">
@@ -656,7 +722,6 @@
                 <!-- 12. Staff -->
                 <div class="member-card">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/9.png" alt="Shankar Desai">
                     </div>
                     <div class="member-details">
@@ -669,7 +734,6 @@
                 <!-- 13. Staff -->
                 <div class="member-card">
                     <div class="member-photo-box">
-                         <!-- REPLACE THIS LINK WITH YOUR PHOTO -->
                         <img src="https://anikfin.com/Ker/staff/14.png" alt="Mahendra Desai">
                     </div>
                     <div class="member-details">
