@@ -3,38 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>मुख्यपृष्ठ - आजगांव ग्रामपंचायत | Digital Grampanchayat</title>
-    <meta name="description" content="आजगांव ग्रामपंचायत अधिकृत संकेतस्थळ - योजना, विकास कामे आणि नागरिक सेवा regarding Ajgaon Village.">
+    <title>मुख्यपृष्ठ - ग्रुप ग्रामपंचायत केर-भेकुर्ली | Digital Grampanchayat</title>
+    <meta name="description" content="ग्रुप ग्रामपंचायत केर-भेकुर्ली अधिकृत संकेतस्थळ - ता. दोडामार्ग, जि. सिंधुदुर्ग.">
     
-    <!-- Google Fonts (Pro Marathi & English Fonts) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- CSS VARIABLES (EASY TO UPDATE COLORS) --- */
+        /* --- CSS VARIABLES (THEME CONFIGURATION) --- */
         :root {
-            --primary-color: #166534; /* Deep Green */
+            --primary-color: #166534; /* Government Green */
+            --primary-light: #dcfce7;
             --secondary-color: #ea580c; /* Saffron/Orange */
-            --accent-color: #15803d; /* Lighter Green */
+            --accent-color: #15803d; 
+            --blue-accent: #2563eb;
             --text-dark: #1f2937;
             --text-light: #6b7280;
             --white: #ffffff;
+            --off-white: #f9fafb;
             --light-bg: #f3f4f6;
             --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --header-shadow: 0 4px 20px rgba(0,0,0,0.08);
             --transition: all 0.3s ease;
         }
 
         /* --- GLOBAL RESET --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
             background-color: var(--light-bg);
@@ -48,365 +48,310 @@
         img { max-width: 100%; height: auto; display: block; }
 
         /* --- UTILITIES --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
         .section-padding { padding: 60px 0; }
         .text-center { text-align: center; }
+        
         .btn {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
         }
         .btn-primary {
-            background: var(--primary-color);
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
             color: var(--white);
-            border: 2px solid var(--primary-color);
+            border: none;
+            box-shadow: 0 4px 15px rgba(22, 101, 52, 0.3);
         }
         .btn-primary:hover {
-            background: transparent;
-            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(22, 101, 52, 0.4);
         }
 
         /* --- TOP BAR --- */
         .top-bar {
-            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            background: linear-gradient(90deg, #1e3a8a, #2563eb); 
             color: var(--white);
             padding: 8px 0;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
-        .top-bar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; }
         .top-links a { margin-left: 15px; opacity: 0.9; }
         .top-links a:hover { opacity: 1; text-decoration: underline; }
 
-        /* --- HEADER & NAVIGATION --- */
+        /* --- HEADER --- */
         header {
             background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: var(--header-shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: var(--transition);
         }
+
         .header-main {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
+            position: relative;
         }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .emblem { height: 50px; }
-        .village-name h1 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            line-height: 1.2;
-        }
-        .village-name p {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
+
+        .brand-area { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+        .logo-img { height: 80px; width: auto; object-fit: contain; }
+        
+        .title-block { text-align: center; flex: 1; padding: 0 15px; }
+        .sub-title { color: var(--secondary-color); font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: -5px; }
+        .main-title { color: var(--primary-color); font-size: 1.8rem; font-weight: 800; line-height: 1.2; text-shadow: 1px 1px 0px rgba(0,0,0,0.1); }
+        .location-text { color: var(--text-dark); font-size: 0.9rem; font-weight: 600; }
 
         /* Nav Menu */
-        .nav-menu { display: flex; gap: 30px; }
-        .nav-link {
-            font-weight: 600;
-            color: var(--text-dark);
-            position: relative;
-        }
-        .nav-link:hover { color: var(--primary-color); }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-color);
-            bottom: -5px;
-            left: 0;
-            transition: var(--transition);
-        }
-        .nav-link:hover::after { width: 100%; }
+        .nav-wrapper { background: var(--primary-color); margin-top: 10px; }
+        .nav-menu { display: flex; justify-content: center; gap: 2px; }
+        .nav-link { display: block; padding: 12px 20px; color: var(--white); font-weight: 500; font-size: 0.95rem; transition: background 0.3s; }
+        .nav-link:hover { background: rgba(255,255,255,0.15); color: #fbbf24; }
+        .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary-color); }
 
-        /* Mobile Menu Toggle */
-        .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
-
-        /* --- HERO SECTION --- */
+        /* --- NEW HERO SECTION (GALLERY SLIDER) --- */
         .hero {
-            height: 600px;
+            height: 550px;
             position: relative;
-            background-image: url('https://assets.mahagrampanchayat.in/ajgaon/images/1762575247085-hero-images_1762575236066-AjgaonVetoba.png'); /* Replace with your image */
-            background-size: cover;
-            background-position: center;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #000; /* Fallback */
         }
-        .hero-overlay {
+        
+        /* Slider Wrapper */
+        .hero-slider {
             position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
         }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .hero-slide.active { opacity: 1; }
+        
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Dim the image slightly so text pops */
+            filter: brightness(0.6); 
+        }
+
         .hero-content {
             position: relative;
             z-index: 10;
             text-align: center;
             color: var(--white);
-            animation: fadeIn Up 1s ease;
+            animation: fadeInUp 1s ease;
         }
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            color: #d1fae5;
+        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.4rem; margin-bottom: 30px; color: #e2e8f0; font-weight: 500; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- SEARCH BAR --- */
-        .search-wrapper {
-            margin-top: -30px;
-            position: relative;
-            z-index: 20;
-            padding: 0 20px;
-        }
+        /* --- SEARCH & MARQUEE --- */
+        .search-container { margin-top: -30px; position: relative; z-index: 20; padding: 0 20px; }
         .search-box {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--white);
-            padding: 10px;
-            border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
+            max-width: 700px; margin: 0 auto; background: var(--white); padding: 8px;
+            border-radius: 50px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; border: 1px solid #e5e7eb;
         }
-        .search-box input {
-            flex: 1;
-            border: none;
-            padding: 10px 20px;
-            outline: none;
-            font-size: 1rem;
-            border-radius: 50px;
-        }
+        .search-box input { flex: 1; border: none; padding: 12px 25px; outline: none; font-size: 1rem; border-radius: 50px; }
         .search-box button {
-            background: var(--primary-color);
-            color: var(--white);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
+            background: var(--secondary-color); color: var(--white); border: none; width: 45px; height: 45px;
+            border-radius: 50%; cursor: pointer; transition: var(--transition);
         }
-        .search-box button:hover { background: var(--secondary-color); }
+        .search-box button:hover { background: var(--primary-color); }
 
-        /* --- MARQUEE (NEWS) --- */
-        .news-ticker {
-            background: var(--white);
-            border-bottom: 1px solid #e5e7eb;
-            padding: 10px 0;
+        .news-ticker { background: var(--white); border-bottom: 1px solid #e5e7eb; padding: 12px 0; margin-top: 25px; }
+        .news-wrapper { display: flex; align-items: center; }
+        .news-label { background: var(--primary-color); color: var(--white); padding: 4px 12px; font-size: 0.8rem; border-radius: 4px; margin-right: 15px; white-space: nowrap; }
+        marquee { font-weight: 500; color: #dc2626; font-size: 0.95rem; }
+
+        /* --- SECTION HEADERS --- */
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.2rem; color: var(--primary-color); position: relative; display: inline-block; margin-bottom: 10px; }
+        .section-title h2::after { content: ''; width: 80px; height: 4px; background: var(--secondary-color); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+
+        /* --- NEW SECTION 1: VILLAGE AT A GLANCE (KPI ICONS) --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
-        .news-container {
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .news-label {
-            background: var(--secondary-color);
-            color: var(--white);
-            padding: 5px 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border-radius: 4px;
-            white-space: nowrap;
-            margin-right: 15px;
-        }
-        marquee { font-weight: 500; color: var(--primary-color); }
 
-        /* --- LEADERS SECTION --- */
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            position: relative;
-            display: inline-block;
-        }
-        .section-title h2::after {
-            content: '';
-            width: 60px;
-            height: 3px;
-            background: var(--secondary-color);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .leaders-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .leader-card {
+        .stat-card {
             background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            position: relative;
-            transition: var(--transition);
-            border-top: 4px solid var(--secondary-color);
-        }
-        .leader-card:hover { transform: translateY(-10px); }
-        .leader-img-wrapper {
-            height: 300px;
-            position: relative;
-        }
-        .leader-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-        }
-        .leader-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            padding: 20px;
-            color: var(--white);
-        }
-        .leader-name { font-size: 1.2rem; font-weight: 700; margin-top: 5px; }
-        .leader-role { font-size: 0.9rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- SERVICES GRID --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-        }
-        .service-card {
-            background: var(--white);
-            padding: 30px 20px;
             border-radius: 12px;
+            padding: 25px 15px;
             text-align: center;
             box-shadow: var(--shadow);
+            border-bottom: 4px solid var(--primary-color);
             transition: var(--transition);
-            border: 1px solid #eee;
-            cursor: pointer;
         }
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            background: linear-gradient(to bottom right, #ffffff, #f0fdf4);
-        }
-        .icon-box {
+        .stat-card:hover { transform: translateY(-5px); }
+
+        .stat-icon-wrapper {
             width: 70px;
             height: 70px;
-            background: #dcfce7;
-            color: var(--primary-color);
+            background: var(--primary-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 15px;
+            color: var(--primary-color);
             font-size: 1.8rem;
-            transition: var(--transition);
         }
-        .service-card:hover .icon-box {
-            background: var(--primary-color);
-            color: var(--white);
+        
+        /* Alternate Colors for visual appeal */
+        .stat-card:nth-child(2) .stat-icon-wrapper { background: #fee2e2; color: #ef4444; }
+        .stat-card:nth-child(2) { border-bottom-color: #ef4444; }
+        
+        .stat-card:nth-child(3) .stat-icon-wrapper { background: #e0f2fe; color: #0284c7; }
+        .stat-card:nth-child(3) { border-bottom-color: #0284c7; }
+        
+        .stat-card:nth-child(4) .stat-icon-wrapper { background: #ffedd5; color: var(--secondary-color); }
+        .stat-card:nth-child(4) { border-bottom-color: var(--secondary-color); }
+
+        .stat-number { font-size: 1.8rem; font-weight: 800; color: var(--text-dark); display: block; line-height: 1.2; }
+        .stat-label { font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
+
+        /* --- NEW SECTION 2: PROGRESS METER --- */
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
         }
-        .service-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
-        .service-card p { font-size: 0.9rem; color: var(--text-light); }
+
+        .progress-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid #f0f0f0;
+        }
+
+        .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .progress-title { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 10px; }
+        .progress-title i { color: var(--secondary-color); }
+        
+        .progress-track {
+            background: #e5e7eb;
+            height: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            /* Animated striped background */
+            background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+            background-size: 1rem 1rem;
+            animation: progress-stripes 1s linear infinite;
+        }
+        
+        @keyframes progress-stripes { from { background-position: 1rem 0; } to { background-position: 0 0; } }
+
+        .progress-meta { display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: var(--text-light); }
+        .progress-percent { font-size: 1.2rem; font-weight: 800; color: var(--text-dark); }
+
+        /* --- LEADERS SECTION --- */
+        .leaders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .leader-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); }
+        .leader-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .leader-img-wrapper { height: 320px; position: relative; }
+        .leader-img-wrapper img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .leader-info { padding: 20px; text-align: center; background: linear-gradient(to bottom, #ffffff, #f0fdf4); }
+        .leader-name { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); }
+        .leader-role { color: var(--secondary-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; }
+
+        /* --- SERVICES GRID --- */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 25px; }
+        .service-card {
+            background: var(--white); padding: 35px 25px; border-radius: 15px; text-align: center;
+            box-shadow: var(--shadow); transition: var(--transition); border: 1px solid rgba(0,0,0,0.05);
+            cursor: pointer; position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { transform: translateY(-5px); }
+        
+        .icon-circle {
+            width: 70px; height: 70px; background: #dcfce7; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--primary-color);
+            font-size: 1.8rem; transition: var(--transition);
+        }
+        .service-card:hover .icon-circle { background: var(--primary-color); color: var(--white); }
+        .service-card h3 { font-size: 1.15rem; margin-bottom: 8px; font-weight: 700; }
+        .service-card p { font-size: 0.85rem; color: var(--text-light); }
 
         /* --- FOOTER --- */
-        footer {
-            background: linear-gradient(to right, #064e3b, #065f46);
-            color: var(--white);
-            padding-top: 60px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            padding-bottom: 40px;
-        }
-        .footer-col h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: #fbbf24; /* Gold */
-            border-left: 3px solid #fbbf24;
-            padding-left: 10px;
-        }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a {
-            color: #d1fae5;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .footer-links a:hover { color: var(--white); padding-left: 5px; }
-        .contact-info li {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            color: #d1fae5;
-        }
-        .copyright {
-            background: rgba(0,0,0,0.2);
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
+        footer { background: #0f172a; color: #cbd5e1; padding-top: 70px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; padding-bottom: 50px; }
+        .footer-col h3 { color: var(--white); font-size: 1.2rem; margin-bottom: 25px; position: relative; padding-left: 15px; }
+        .footer-col h3::before { content: ''; position: absolute; left: 0; top: 5px; height: 18px; width: 4px; background: var(--secondary-color); }
+        .footer-links li { margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px; }
+        .footer-links li:last-child { border: none; }
+        .footer-links a { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--secondary-color); padding-left: 5px; }
+        .contact-list li { display: flex; gap: 15px; margin-bottom: 20px; }
+        .contact-list i { color: var(--secondary-color); margin-top: 5px; }
+        .copyright { background: #020617; padding: 25px 0; text-align: center; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1); }
 
-        /* --- RESPONSIVE CSS --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
+            .brand-area { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .title-block { order: 2; width: 100%; margin-top: 10px; }
+            .logo-img { height: 60px; order: 1; }
+            .zp-logo { order: 3; }
+            
             .nav-menu {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                background: var(--white);
-                width: 80%;
-                height: calc(100vh - 80px);
-                flex-direction: column;
-                padding: 40px;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                transition: 0.4s ease;
+                flex-direction: column; display: none; background: var(--white);
+                position: absolute; top: 100%; left: 0; width: 100%; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             }
-            .nav-menu.active { right: 0; }
-            .mobile-toggle { display: block; }
-            .hero h1 { font-size: 2.5rem; }
+            .nav-menu.active { display: block; }
+            .nav-link { color: var(--text-dark); border-bottom: 1px solid #eee; text-align: center; }
+            .nav-link:hover { color: var(--primary-color); background: #f9f9f9; }
+            
+            .mobile-toggle { display: block; position: absolute; right: 20px; top: 30px; }
+            .header-main { padding-bottom: 10px; }
         }
 
         @media (max-width: 768px) {
-            .top-bar .container { flex-direction: column; gap: 5px; text-align: center; }
-            .header-main { padding: 10px 0; }
-            .village-name h1 { font-size: 1.2rem; }
+            .top-bar .container { flex-direction: column; gap: 5px; }
             .hero { height: 400px; }
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-            .leader-img-wrapper { height: 250px; }
+            .hero h1 { font-size: 2.2rem; }
+            .main-title { font-size: 1.4rem; }
+            .logo-img { height: 50px; }
+            .leaders-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .progress-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -417,174 +362,293 @@
         <div class="container">
             <div class="govt-text">महाराष्ट्र शासन | Government of Maharashtra</div>
             <div class="top-links">
-                <a href="#"><i class="fas fa-user-lock"></i> प्रशासक लॉगिन</a>
+                <a href="#"><i class="fas fa-lock"></i> प्रशासन लॉगिन</a>
                 <a href="#"><i class="fas fa-sitemap"></i> साइटमॅप</a>
-                <a href="#"><i class="fas fa-language"></i> मराठी / English</a>
             </div>
         </div>
     </div>
 
     <!-- Main Header -->
     <header>
-        <div class="container header-main">
-            <a href="/" class="logo-area">
-                <!-- Use a generic Ashoka Emblem URL or your local file -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem" class="emblem">
-                <div class="village-name">
-                    <h1>ग्रामपंचायत आजगांव</h1>
-                    <p>ता. सावंतवाडी | जि. सिंधुदुर्ग</p>
+        <div class="container">
+            <div class="header-main">
+                <div class="brand-area">
+                    <img src="https://anikfin.com/Ker/logo.jpg" alt="Grampanchayat Logo" class="logo-img">
+                    <div class="title-block">
+                        <span class="sub-title">आदर्श गाव</span>
+                        <h1 class="main-title">ग्रुप ग्रामपंचायत केर-भेकुर्ली</h1>
+                        <p class="location-text">ता. दोडामार्ग | जि. सिंधुदुर्ग</p>
+                    </div>
+                    <img src="https://anikfin.com/Ker/zp.png" alt="Zilla Parishad Logo" class="logo-img zp-logo">
                 </div>
-            </a>
-
-            <!-- Mobile Menu Button -->
-            <div class="mobile-toggle" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
+                <div class="mobile-toggle" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
+        </div>
 
-            <!-- Navigation -->
-            <nav>
+        <div class="nav-wrapper">
+            <div class="container">
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#" class="nav-link">मुख्यपृष्ठ</a></li>
                     <li><a href="#about" class="nav-link">आमच्याबद्दल</a></li>
-                    <li><a href="#services" class="nav-link">योजना</a></li>
+                    <li><a href="#services" class="nav-link">नागरिक सेवा</a></li>
+                    <li><a href="#stats" class="nav-link">प्रगती अहवाल</a></li>
                     <li><a href="#projects" class="nav-link">विकास कामे</a></li>
                     <li><a href="#gallery" class="nav-link">गॅलरी</a></li>
                     <li><a href="#contact" class="nav-link">संपर्क</a></li>
                 </ul>
-            </nav>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- UPDATED HERO SECTION WITH GALLERY SLIDER -->
     <section class="hero">
-        <div class="hero-overlay"></div>
+        <div class="hero-slider">
+            <!-- 12 Placeholder Images for Gallery -->
+            <div class="hero-slide active"><img src="https://anikfin.com/Ker/1.jpg" alt="Slide 1"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/3.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/4.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/5.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/6.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/7.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/8.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/9.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/10.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/11.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/12.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/13.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/14.jpg" alt="Slide 2"></div>
+            <div class="hero-slide"><img src="https://anikfin.com/Ker/15.jpg" alt="Slide 2"></div>
+        </div>
+        
         <div class="hero-content container">
-            <h1>आजगांव वेतोबा</h1>
-            <p>सुंदर गाव, स्वच्छ गाव, समृद्ध गाव</p>
-            <a href="#services" class="btn btn-primary" style="border-color: white; color: white;">अधिक माहिती</a>
+            <h1>केर-भेकुर्ली</h1>
+            <p>स्वच्छ, सुंदर आणि समृद्ध आदर्श गाव</p>
+            <a href="#services" class="btn btn-primary">अधिक माहिती</a>
         </div>
     </section>
 
-    <!-- Search Section -->
-    <div class="search-wrapper">
-        <div class="search-box">
-            <input type="text" placeholder="वेबसाइटवर शोधा... (योजना, कार्यक्रम, कागदपत्रे)">
-            <button><i class="fas fa-search"></i></button>
+    <!-- Search & News -->
+    <div class="container">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="वेबसाइटवर शोधा... (उदा. जन्म दाखला, घरपट्टी)">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        <div class="news-ticker">
+            <div class="news-wrapper">
+                <span class="news-label">ताज्या घोषणा</span>
+                <marquee onmouseover="this.stop()" onmouseout="this.start()">
+                    ग्रामसभा दिनांक १५ ऑगस्ट रोजी आयोजित केली आहे. | पाणी पट्टी आणि घरपट्टी ३१ मार्च पूर्वी भरा. | केर-भेकुर्ली गावात प्लास्टिक बंदी लागू.
+                </marquee>
+            </div>
         </div>
     </div>
 
-    <!-- News Marquee -->
-    <div class="news-ticker">
-        <div class="news-container">
-            <span class="news-label">ताज्या बातम्या</span>
-            <marquee onmouseover="this.stop()" onmouseout="this.start()">
-                येत्या २६ जानेवारी रोजी विशेष ग्रामसभा आयोजित करण्यात आली आहे. | पाणी पट्टी आणि घरपट्टी वेळेत भरून सहकार्य करा. | नवीन सौर ऊर्जा प्रकल्प मंजुरी मिळाली आहे.
-            </marquee>
-        </div>
-    </div>
-
-    <!-- Leaders Section -->
-    <section class="section-padding" style="background: #fff;">
+    <!-- NEW SECTION: VILLAGE AT A GLANCE (KPI INDICATORS) -->
+    <section id="stats" class="section-padding">
         <div class="container">
             <div class="section-title">
-                <h2>महाराष्ट्र राज्याचे नेतृत्व</h2>
-                <p>प्रगतीच्या दिशेने भक्कम पाऊल</p>
+                <h2>गाव एक दृष्टीक्षेपात</h2>
+                <p>आमच्या गावाची महत्वाची माहिती व सांख्यिकी</p>
             </div>
-            
-            <div class="leaders-grid">
-                <!-- Leader 1 -->
-                <div class="leader-card">
-                    <div class="leader-img-wrapper">
-                        <!-- Using placeholder images - replace with actual URLs -->
-                        <img src="https://devendrafadnavis.in/wp-content/uploads/2023/07/Devendra-Fadnavis-Dy-CM-Maharashtra.jpg" alt="Devendra Fadnavis">
-                        <div class="leader-overlay">
-                            <p class="leader-role">माननीय मुख्यमंत्री</p>
-                            <h3 class="leader-name">श्री. देवेंद्र फडणवीस</h3>
-                        </div>
+
+            <div class="stats-grid">
+                <!-- Stat 1 -->
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper"><i class="fas fa-users"></i></div>
+                    <span class="stat-number">१२,५००</span>
+                    <span class="stat-label">एकूण लोकसंख्या</span>
+                </div>
+                <!-- Stat 2 -->
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper"><i class="fas fa-home"></i></div>
+                    <span class="stat-number">१,२००</span>
+                    <span class="stat-label">एकूण घरसंख्या</span>
+                </div>
+                <!-- Stat 3 -->
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper"><i class="fas fa-graduation-cap"></i></div>
+                    <span class="stat-number">८८.५%</span>
+                    <span class="stat-label">साक्षरता दर</span>
+                </div>
+                <!-- Stat 4 -->
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper"><i class="fas fa-map-marked-alt"></i></div>
+                    <span class="stat-number">९</span>
+                    <span class="stat-label">प्रभाग</span>
+                </div>
+                <!-- Stat 5 -->
+                <div class="stat-card">
+                    <div class="stat-icon-wrapper"><i class="fas fa-hand-holding-water"></i></div>
+                    <span class="stat-number">१०</span>
+                    <span class="stat-label">पाण्याचे स्त्रोत</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: PROGRESS METER (KPI INDICATORS) -->
+    <section class="section-padding" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>प्रगती मीटर</h2>
+                <p>विकास कामांची प्रगती आणि उपलब्धी</p>
+            </div>
+
+            <div class="progress-grid">
+                <!-- Item 1: Toilets -->
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-title"><i class="fas fa-restroom"></i> स्वच्छतागृह बांधणी</div>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 92%; background-color: #3b82f6;"></div>
+                    </div>
+                    <div class="progress-meta">
+                        <span class="progress-percent">९२%</span>
+                        <span>१२०० पैकी ११०४</span>
                     </div>
                 </div>
 
-                <!-- Leader 2 -->
-                <div class="leader-card">
-                    <div class="leader-img-wrapper">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Eknath_Shinde_2024.jpg" alt="Eknath Shinde">
-                        <div class="leader-overlay">
-                            <p class="leader-role">माननीय उपमुख्यमंत्री</p>
-                            <h3 class="leader-name">श्री. एकनाथ शिंदे</h3>
-                        </div>
+                <!-- Item 2: Water Tap -->
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-title"><i class="fas fa-faucet"></i> नळ जोडणी कव्हरेज</div>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 88%; background-color: #06b6d4;"></div>
+                    </div>
+                    <div class="progress-meta">
+                        <span class="progress-percent">८८%</span>
+                        <span>१२०० पैकी १०५६</span>
                     </div>
                 </div>
 
-                <!-- Leader 3 -->
-                <div class="leader-card">
-                    <div class="leader-img-wrapper">
-                        <img src="https://www.loksatta.com/wp-content/uploads/2023/07/Ajit-Pawar-4.jpg" alt="Ajit Pawar">
-                        <div class="leader-overlay">
-                            <p class="leader-role">माननीय उपमुख्यमंत्री</p>
-                            <h3 class="leader-name">श्री. अजित पवार</h3>
-                        </div>
+                <!-- Item 3: Electricity -->
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-title"><i class="fas fa-lightbulb"></i> वीजपुरवठा असलेली घरे</div>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 98%; background-color: #eab308;"></div>
+                    </div>
+                    <div class="progress-meta">
+                        <span class="progress-percent">९८%</span>
+                        <span>१२०० पैकी ११९६</span>
+                    </div>
+                </div>
+
+                <!-- Item 4: Plantation -->
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-title"><i class="fas fa-tree"></i> वृक्षारोपण (लक्ष्य: १००००)</div>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 65%; background-color: #22c55e;"></div>
+                    </div>
+                    <div class="progress-meta">
+                        <span class="progress-percent">६५%</span>
+                        <span>६५०० वृक्ष लागवड</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services & Features Section -->
+    <!-- Services Section -->
     <section id="services" class="section-padding">
         <div class="container">
             <div class="section-title">
-                <h2>सेवा आणि सुविधा</h2>
-                <p>नागरिकांसाठी उपलब्ध डिजिटल सेवा</p>
+                <h2>ई-सेवा आणि सुविधा</h2>
+                <p>ग्रुप ग्रामपंचायत केर-भेकुर्ली</p>
             </div>
 
             <div class="services-grid">
-                <!-- Item 1 -->
                 <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-users"></i></div>
+                    <div class="icon-circle"><i class="fas fa-users"></i></div>
                     <h3>पदाधिकारी</h3>
-                    <p>सरपंच आणि सदस्यांची माहिती</p>
+                    <p>सरपंच व सदस्य मंडळ</p>
                 </div>
-                <!-- Item 2 -->
                 <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-building-user"></i></div>
-                    <h3>विकास प्रकल्प</h3>
-                    <p>चालू आणि पूर्ण कामे</p>
+                    <div class="icon-circle"><i class="fas fa-file-alt"></i></div>
+                    <h3>दाखले</h3>
+                    <p>जन्म-मृत्यू, रहिवासी दाखले</p>
                 </div>
-                <!-- Item 3 -->
                 <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-file-invoice"></i></div>
-                    <h3>शासकीय योजना</h3>
-                    <p>लाभार्थी यादी आणि अर्ज</p>
+                    <div class="icon-circle"><i class="fas fa-hand-holding-water"></i></div>
+                    <h3>पाणी पुरवठा</h3>
+                    <p>योजना व तक्रार निवारण</p>
                 </div>
-                <!-- Item 4 -->
                 <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-bullhorn"></i></div>
-                    <h3>घोषणा</h3>
-                    <p>महत्वाच्या सूचना आणि नोटीस</p>
+                    <div class="icon-circle"><i class="fas fa-landmark"></i></div>
+                    <h3>घरपट्टी / कर</h3>
+                    <p>कराची माहिती व भरणा</p>
                 </div>
-                <!-- Item 5 -->
                 <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-briefcase"></i></div>
-                    <h3>रोजगार</h3>
-                    <p>स्थानिक नोकरी संधी</p>
+                    <div class="icon-circle"><i class="fas fa-bullhorn"></i></div>
+                    <h3>ग्रामसभा</h3>
+                    <p>इतिवृत्त आणि नोटीस</p>
                 </div>
-                <!-- Item 6 -->
                 <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-images"></i></div>
+                    <div class="icon-circle"><i class="fas fa-image"></i></div>
                     <h3>गॅलरी</h3>
-                    <p>गावाचे फोटो आणि व्हिडिओ</p>
+                    <p>विकास कामांचे फोटो</p>
                 </div>
-                <!-- Item 7 -->
                 <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-file-download"></i></div>
-                    <h3>दस्तऐवज</h3>
-                    <p>दाखले आणि फॉर्म्स</p>
-                </div>
-                <!-- Item 8 -->
-                <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-phone"></i></div>
+                    <div class="icon-circle"><i class="fas fa-phone-alt"></i></div>
                     <h3>संपर्क</h3>
-                    <p>तक्रार निवारण आणि मदत</p>
+                    <p>आम्हाला संपर्क करा</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon-circle"><i class="fas fa-download"></i></div>
+                    <h3>डाउनलोड</h3>
+                    <p>अर्जाचे नमुने</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaders Section -->
+    <section class="section-padding" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>महाराष्ट्र राज्याचे नेतृत्व</h2>
+                <p>राज्याच्या विकासाचे आधारस्तंभ</p>
+            </div>
+            
+            <div class="leaders-grid">
+                <!-- CM -->
+                <div class="leader-card">
+                    <div class="leader-img-wrapper">
+                        <img src="https://anikfin.com/Ker/cm.png" alt="CM">
+                    </div>
+                    <div class="leader-info">
+                        <p class="leader-role">माननीय मुख्यमंत्री</p>
+                        <h3 class="leader-name">श्री. देवेंद्र फडणवीस</h3>
+                    </div>
+                </div>
+                <!-- DCM 1 -->
+                <div class="leader-card">
+                    <div class="leader-img-wrapper">
+                        <img src="https://anikfin.com/Ker/shinde.png" alt="DCM">
+                    </div>
+                    <div class="leader-info">
+                        <p class="leader-role">माननीय उपमुख्यमंत्री</p>
+                        <h3 class="leader-name">श्री. एकनाथ शिंदे</h3>
+                    </div>
+                </div>
+                <!-- DCM 2 -->
+                <div class="leader-card">
+                    <div class="leader-img-wrapper">
+                        <img src="https://www.loksatta.com/wp-content/uploads/2023/07/Ajit-Pawar-4.jpg" alt="DCM">
+                    </div>
+                    <div class="leader-info">
+                        <p class="leader-role">माननीय उपमुख्यमंत्री</p>
+                        <h3 class="leader-name">श्री. अजित पवार</h3>
+                    </div>
                 </div>
             </div>
         </div>
@@ -593,88 +657,64 @@
     <!-- Footer -->
     <footer id="contact">
         <div class="container footer-grid">
-            <!-- Col 1 -->
             <div class="footer-col">
-                <h3>आजगांव ग्रामपंचायत</h3>
-                <p style="opacity: 0.8; margin-bottom: 20px;">
-                    आधुनिक तंत्रज्ञान आणि पारंपारिक संस्कृतीचा संगम. आपल्या गावाच्या विकासासाठी कटिबद्ध.
+                <h3>ग्रुप ग्रा.पं. केर-भेकुर्ली</h3>
+                <p style="opacity: 0.8; line-height: 1.8;">
+                    केर-भेकुर्ली हे दोडामार्ग तालुक्यातील एक प्रगतशील गाव आहे. नैसर्गिक सौंदर्य आणि सांस्कृतिक वारसा जपून आम्ही विकासाकडे वाटचाल करत आहोत.
                 </p>
-                <div style="display: flex; gap: 15px;">
-                    <a href="#" style="background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 5px;"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" style="background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 5px;"><i class="fab fa-twitter"></i></a>
-                    <a href="#" style="background: rgba(255,255,255,0.2); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 5px;"><i class="fab fa-youtube"></i></a>
-                </div>
             </div>
-
-            <!-- Col 2 -->
             <div class="footer-col">
                 <h3>महत्त्वाचे दुवे</h3>
                 <ul class="footer-links">
                     <li><a href="#"><i class="fas fa-chevron-right"></i> मुख्यपृष्ठ</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> आमच्याबद्दल</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> लोकसेवा हक्क</a></li>
                     <li><a href="#"><i class="fas fa-chevron-right"></i> गोपनीयता धोरण</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> नियम आणि अटी</a></li>
                 </ul>
             </div>
-
-            <!-- Col 3 -->
-            <div class="footer-col">
-                <h3>शासकीय लिंक्स</h3>
-                <ul class="footer-links">
-                    <li><a href="#"><i class="fas fa-external-link-alt"></i> महाराष्ट्र शासन</a></li>
-                    <li><a href="#"><i class="fas fa-external-link-alt"></i> ई-ग्रामस्वराज</a></li>
-                    <li><a href="#"><i class="fas fa-external-link-alt"></i> आपले सरकार</a></li>
-                    <li><a href="#"><i class="fas fa-external-link-alt"></i> प्रधानमंत्री आवास योजना</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 4 -->
             <div class="footer-col">
                 <h3>संपर्क माहिती</h3>
-                <ul class="contact-info">
+                <ul class="contact-list">
                     <li>
-                        <i class="fas fa-map-marker-alt" style="margin-top: 5px;"></i>
-                        <span>ग्रामपंचायत कार्यालय आजगांव,<br>ता. सावंतवाडी, जि. सिंधुदुर्ग - 416518</span>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>ग्रामपंचायत कार्यालय केर-भेकुर्ली,<br>ता. दोडामार्ग, जि. सिंधुदुर्ग</span>
                     </li>
                     <li>
-                        <i class="fas fa-phone-alt"></i>
-                        <span>(02363) 264997</span>
+                        <i class="fas fa-phone"></i>
+                        <span>(02363) XXXXXX</span>
                     </li>
                     <li>
                         <i class="fas fa-envelope"></i>
-                        <span>gpajgaon1@gmail.com</span>
+                        <span>contact@kerbhekurli.in</span>
                     </li>
                 </ul>
             </div>
         </div>
-
         <div class="copyright">
             <div class="container">
-                <p>&copy; 2025 आजगांव ग्रामपंचायत. सर्व हक्क राखीव. | Design by YourName</p>
+                <p>&copy; 2025 ग्रुप ग्रामपंचायत केर-भेकुर्ली. सर्व हक्क राखीव.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Functionality -->
+    <!-- JavaScript -->
     <script>
-        // Mobile Menu Toggle
+        // Toggle Mobile Menu
         function toggleMenu() {
             const nav = document.getElementById('navMenu');
-            const toggleBtn = document.querySelector('.mobile-toggle i');
+            const icon = document.querySelector('.mobile-toggle i');
             
             nav.classList.toggle('active');
             
-            // Change Icon
             if(nav.classList.contains('active')) {
-                toggleBtn.classList.remove('fa-bars');
-                toggleBtn.classList.add('fa-times');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
             } else {
-                toggleBtn.classList.remove('fa-times');
-                toggleBtn.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
         }
 
-        // Close menu when clicking a link (Mobile UX)
+        // Close menu on link click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('navMenu').classList.remove('active');
@@ -683,15 +723,18 @@
             });
         });
 
-        // Sticky Header Effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
-            } else {
-                header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.05)";
-            }
-        });
+        // HERO SLIDER SCRIPT
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Change slide every 4 seconds
+        setInterval(nextSlide, 4000);
     </script>
 </body>
 </html>
