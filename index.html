@@ -94,6 +94,41 @@
         .info-card .val { font-size: 1.8rem; font-weight: 800; display: block; }
         .info-card .lbl { font-size: 0.85rem; color: var(--text-light); font-weight: 600; }
 
+        /* --- STYLISH GALLERY SECTION FOR ADARSH GAON KER --- */
+        .adarsh-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .gallery-card-item {
+            background: #fff;
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            border: 1px solid #e5e7eb;
+            text-align: center;
+        }
+        .gallery-card-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(22, 101, 52, 0.15);
+        }
+        .gallery-card-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+        .gallery-card-item .photo-caption {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            padding: 5px 0;
+            display: block;
+        }
+
         /* STAFF CARDS */
         .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
         .staff-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); border-top: 4px solid var(--secondary-color); text-align: center; }
@@ -112,6 +147,7 @@
 
         @media (max-width: 992px) {
             .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .adarsh-gallery-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
@@ -122,6 +158,7 @@
             .services-grid { grid-template-columns: 1fr; }
             .main-title { font-size: 1.3rem; }
             .brand-area { flex-direction: column; text-align: center; gap: 10px; }
+            .adarsh-gallery-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -160,6 +197,7 @@
                     <li><a href="#services" class="nav-link">ई-सेवा</a></li>
                     <li><a href="#infra" class="nav-link">सुविधा</a></li>
                     <li><a href="#innovation" class="nav-link">उपक्रम</a></li>
+                    <li><a href="#adarsh" class="nav-link">आदर्श गाव</a></li>
                     <li><a href="#contact" class="nav-link">संपर्क</a></li>
                 </ul>
             </div>
@@ -187,7 +225,7 @@
         </div>
     </div>
 
-    <!-- 1. LEADERS SECTION (UPDATED AS PER SCREENSHOT) -->
+    <!-- 1. LEADERS SECTION -->
     <section class="section-padding" style="background:white;">
         <div class="container">
             <div class="section-title">
@@ -195,19 +233,16 @@
                 <p>राज्याच्या विकासाचे आधारस्तंभ</p>
             </div>
             <div class="leaders-grid">
-                <!-- Leader 1 -->
                 <div class="leader-card">
                     <img src="https://anikfin.com/Ker/cm.png" class="leader-img" alt="Devendra Fadnavis">
                     <div class="leader-role">माननीय मुख्यमंत्री</div>
                     <div class="leader-name">श्री. देवेंद्र फडणवीस</div>
                 </div>
-                <!-- Leader 2 -->
                 <div class="leader-card">
                     <img src="https://anikfin.com/Ker/shinde.png" class="leader-img" alt="Eknath Shinde">
                     <div class="leader-role">माननीय उपमुख्यमंत्री</div>
                     <div class="leader-name">श्री. एकनाथ शिंदे</div>
                 </div>
-                <!-- Leader 3 -->
                 <div class="leader-card">
                     <img src="https://www.loksatta.com/wp-content/uploads/2023/07/Ajit-Pawar-4.jpg" class="leader-img" alt="Ajit Pawar">
                     <div class="leader-role">माननीय उपमुख्यमंत्री</div>
@@ -217,7 +252,7 @@
         </div>
     </section>
 
-    <!-- 2. SERVICES SECTION (UPDATED AS PER SCREENSHOT) -->
+    <!-- 2. SERVICES SECTION -->
     <section id="services" class="section-padding">
         <div class="container">
             <div class="section-title">
@@ -253,8 +288,8 @@
                 <div class="service-card">
                     <div class="icon-box"><i class="fas fa-image"></i></div>
                     <h3>
-    <a href="https://uatonpe.github.io/Ker-Bhekurli/gallary.html">गॅलरी</a>
-</h3>
+                        <a href="https://uatonpe.github.io/Ker-Bhekurli/gallary.html">गॅलरी</a>
+                    </h3>
                     <p>विकास कामांचे फोटो</p>
                 </div>
                 <div class="service-card">
@@ -271,21 +306,19 @@
         </div>
     </section>
 
-    <!-- 3. VILLAGE STATS (CENSUS DATA) -->
+    <!-- 3. VILLAGE STATS -->
     <section id="stats" class="section-padding" style="background: white;">
         <div class="container">
             <div class="section-title">
                 <h2>गाव सांख्यिकी (जनगणना २०११)</h2>
                 <p>महसुली गाव केर व महसुली गाव भेकुर्ली</p>
             </div>
-            <h3 style="margin-bottom:20px; color:var(--primary-color);"></h3>
             <div class="grid-layout" style="margin-bottom: 40px;">
                 <div class="info-card"><i class="fas fa-users"></i><span class="val">९१०</span><span class="lbl">एकूण लोकसंख्या</span></div>
                 <div class="info-card"><i class="fas fa-male"></i><span class="val">४३४</span><span class="lbl">गावातील पुरुष संख्या</span></div>
                 <div class="info-card"><i class="fas fa-female"></i><span class="val">४७६</span><span class="lbl">गावातील स्त्री संख्या</span></div>
                 <div class="info-card"><i class="fas fa-id-card"></i><span class="val">७२५</span><span class="lbl">मतदार संख्या</span></div>
             </div>
-            <h3 style="margin-bottom:20px; color:var(--primary-color);"></h3>
             <div class="grid-layout">
                 <div class="info-card"><i class="fas fa-home"></i><span class="val">२१०</span><span class="lbl">एकूण घरसंख्या (१००%)</span></div>
                 <div class="info-card"><i class="fas fa-graduation-cap"></i><span class="val">८८.५%</span><span class="lbl">साक्षरता दर</span></div>
@@ -326,7 +359,110 @@
         </div>
     </section>
 
-    <!-- 6. PADADHIKARI SECTION (ALL 13 MEMBERS) -->
+    <!-- 🔴 NEW SECTION: ADARSH GAON KER (20 PHOTOS WITH CAPTIONS) 🔴 -->
+    <section id="adarsh" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>आदर्श गाव केर</h2>
+                <p>आमच्या निसर्गरम्य गावाची आणि विकासकामांची काही छायाचित्रे</p>
+            </div>
+            
+            <div class="adarsh-gallery-grid">
+                <!-- Photo 1 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/01.jpg" alt="Village View">
+                    <span class="photo-caption">वृक्ष पारंपारिक जात संवर्धन</span>
+                </div>
+                <!-- Photo 2 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/02.jpg" alt="Village View">
+                    <span class="photo-caption">सार्वजनिक ठिकाण स्वच्छता मोहीम</span>
+                </div>
+                <!-- Photo 3 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/03.jpg" alt="Village View">
+                    <span class="photo-caption">श्रमदान</span>
+                </div>
+                <!-- Photo 4 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/04.jpg" alt="Village View">
+                    <span class="photo-caption">सुशोभीकरण</span>
+                </div>
+                <!-- Photo 5 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/05.jpg" alt="Village View">
+                    <span class="photo-caption">स्वच्छता मोहीम</span>
+                </div>
+                <!-- Photo 6 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/06.jpg" alt="Village View">
+                    <span class="photo-caption">पायवाटा मजबुतीकरण</span>
+                </div>
+                <!-- Photo 7 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/07.jpg" alt="Village View">
+                    <span class="photo-caption">शासकीय योजना प्रबोधन, समस्या निवारण</span>
+                </div>
+                <!-- Photo 8 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/08.jpg" alt="Village View">
+                    <span class="photo-caption">बालकांचे आरोग्य तपसणी शिबीर</span>
+                </div>
+                <!-- Photo 9 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/09.jpg" alt="Village View">
+                    <span class="photo-caption">लघु धरण सर्वेक्षण</span>
+                </div>
+                <!-- Photo 10 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/10.jpg" alt="Village View">
+                    <span class="photo-caption">पाणी अडवा उपक्रम</span>
+                </div>
+                <!-- Photo 11 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/11.jpg" alt="Village View">
+                    <span class="photo-caption">महिला सन्मान</span>
+                </div>
+                <!-- Photo 12 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/12.jpg" alt="Village View">
+                    <span class="photo-caption">पर्यावरण संवेदना</span>
+                </div>
+                <!-- Photo 13 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/13.jpg" alt="Village View">
+                    <span class="photo-caption">शेती साहित्य वाटप</span>
+                </div>
+                <!-- Photo 14 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/14.jpg" alt="Village View">
+                    <span class="photo-caption">बालोद्यान</span>
+                </div>
+                <!-- Photo 15 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/15.jpg" alt="Village View">
+                    <span class="photo-caption">सुसज्ज प्राथमिक शाळा</span>
+                </div>
+                <!-- Photo 16 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/16.jpg" alt="Village View">
+                    <span class="photo-caption">आपली अंगणवाडी</span>
+                </div>
+                <!-- Photo 17 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/17.jpg" alt="Village View">
+                    <span class="photo-caption">आदर्श गाव केर</span>
+                </div>
+                <!-- Photo 18 -->
+                <div class="gallery-card-item">
+                    <img src="https://anikfin.com/Ker/Photo2/18.jpg" alt="Village View">
+                    <span class="photo-caption">आदर्श गाव केर</span>
+                </div>
+                            </div>
+        </div>
+    </section>
+
+    <!-- 6. PADADHIKARI SECTION -->
     <section id="padadhikari" class="section-padding">
         <div class="container">
             <div class="section-title">
